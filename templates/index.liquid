@@ -1,0 +1,25 @@
+{% comment %}
+
+  This is the homepage of seresin.
+  Features included:
+    - Full screen image
+    - Animated text to fade in on page load
+    - responsive full bleed
+{% endcomment %}
+{% if settings.show-slide-1 %}
+<div class="image-bigger" style="background-image: url({{ 'slide-image-1.jpg' | asset_url }});">
+
+  <div class="wrap">
+    <div class="inner-wrap">
+      <h1 class="animate fadeIn step-1"><img src="{{ 'intro-detail-h1.png' | asset_url }}" alt="seresin top image"></h1>
+      <h3 class="animate fadeIn step-2"><img src="{{ 'intro-detail-h3.png' | asset_url }}" alt="seresin bottom text"></h3>
+    </div>
+  </div>
+
+</div>
+{% endif %}
+{% comment %}{% if settings.show-slide-content-1 == false and settings.slide-link-1.size > 0 %}
+          <a href="{{ settings.slide-link-1 }}">
+          </a>
+        {% else %}
+        {% endif %}{% endcomment %}
