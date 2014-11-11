@@ -16,6 +16,7 @@ timber.cacheSelectors = function () {
 };
 
 timber.init = function () {
+  timber.preloadImages();
   timber.cacheSelectors();
   timber.accessibleNav();
   timber.productImageSwitch();
@@ -23,6 +24,62 @@ timber.init = function () {
   timber.amazeLoad();
   timber.largeImageResize();
   timber.getPages();
+  timber.pagesScroll();
+  timber.loadBg();
+  timber.Geo();
+  timber.preloadImages();
+  timber.carouselScroll();
+  timber.jsonProductBuild();
+};
+
+timber.preloadImages = function() {
+
+  (function($) {
+    function parseImagesFromCSS(doc) {
+      var i, j,
+        rule,
+        image,
+        pattern = /url\((.*)\)/,
+        properties = ['background-image', '-webkit-border-image'],
+        images = {};
+   
+      if (doc.styleSheets) {
+        for (i = 0; i < doc.styleSheets.length; ++i) {
+          images = $.extend(images, parseImagesFromCSS(doc.styleSheets[i]));
+        }
+      } else if (doc.cssRules) {
+        for (i = 0; i < doc.cssRules.length; ++i) {
+          rule = doc.cssRules[i];
+          if (rule.styleSheet) {
+            images = $.extend(images, parseImagesFromCSS(rule.styleSheet));
+          } else if (rule.style) {
+            for (j=0; j < properties.length; j++) {
+              image = pattern.exec(rule.style.getPropertyValue(properties[j]));
+              if (image && image.length === 2) {
+                images[image[1]] = image[0];
+              }
+            }
+          }
+        }
+      }
+      return images;
+    };
+    $.extend({
+      preload: {
+        images: function(doc) {
+          doc = doc || document;
+          var images = $.map(parseImagesFromCSS(doc), function(url) { return url; }),
+            head = doc.getElementsByTagName('head')[0],
+            style = doc.createElement('style');
+          style.type = 'text/css';
+          style.id = 'store-front';
+          style.innerHTML = 'body::after { content: ' + images.join(' ') + '; display: none; }';
+          head.appendChild(style);
+        }
+      }
+    });
+  })(jQuery);
+  
 };
 
 timber.accessibleNav = function () {
@@ -117,7 +174,7 @@ timber.productImageSwitch = function () {
 };
 
 timber.switchImage = function (src, imgObject, el) {
-  // Make sure element is a jquery object
+  // Make sure element is a $ object
   var $el = $(el);
   $el.attr('src', src);
 };
@@ -142,7 +199,7 @@ timber.amazeLoad = function () {
   }
 
   var siteURL = "http://" + top.location.host.toString();
-  $('a').on('click', function(e) {
+  $('a.openFade').on('click', function(e) {
     e.preventDefault();
     var loc = $(this).attr('href');
     $('.loader').fadeIn(100).transition({
@@ -165,8 +222,12 @@ timber.largeImageResize = function () {
         var windowsize = $window.height();
         var footerHeight = $('footer').outerHeight();
         var top = $('.site-header').outerHeight();
-        var remainHeight = parseInt('24');
+        var remainHeight = parseInt('22');
         $('.image-bigger').css('height',windowsize -footerHeight);
+        $('.store-large').css('height',windowsize -footerHeight);
+        $('.article-container-land').css('height',windowsize -footerHeight -remainHeight);
+        $('#collection-slider').css('height',windowsize -footerHeight -remainHeight);
+        $('#collection-slider').css('marginTop',top);
     }
     // Execute on load
     checkWidth();
@@ -175,26 +236,169 @@ timber.largeImageResize = function () {
 
 };
 
+timber.pagesScroll = function() {
+
+
+  
+};
+
+timber.loadBg = function() {
+
+  
+};
+
+timber.Geo = function() {
+  {% comment %}if ($('body#our-store').length){
+    $.ajax( { 
+      url: '//freegeoip.net/json/', 
+      type: 'POST', 
+      dataType: 'jsonp',
+      success: function(location) {
+      var code = location.country_code;
+      var country = location.country_name;
+        if (code === 'GB') {
+          //window.location.href = 'http://shop-in-canada.myshopify.com';
+          var div = $('#location');
+          div.html('<h1>As you are based in '+country+' we have a store that sells our wine.</h1><h2>Please visit our '+code+' seller <a href="http://www.google.co.uk">here</a>.</h2>');
+          console.log('you are in the "'+ code +'"');
+        }
+      }
+    });
+  }  {% endcomment %}
+};
+
 timber.getPages = function() {
+
+if ($('body#our-story').length){
 
   $.each( $("#data-urls li") , function () {
 
     var dataUrl = $(this).attr('data-url');
     var jsonObj = [];
+
+    var sliderStory = $('.article-container-land').royalSlider({
+      arrowsNav: true,
+      arrowsNavAutoHide: false,
+      fadeinLoadedSlide: true,
+      controlNavigation: 'none',
+      imageAlignCenter:true,
+      loop: false,
+      loopRewind: false,
+      numImagesToPreload: 6,
+      slidesOrientation: 'vertical',
+      keyboardNavEnabled: true,
+      addActiveClass: true,
+      imageScaleMode: 'fill',
+      arrowsNavAutoHide: false,
+      autoScaleSlider: false, 
+      autoScaleSliderWidth: 1960,     
+      autoScaleSliderHeight: 800,
+      video: {
+        autoHideArrows:true,
+        autoHideControlNav:true
+      },  
+    }).data('royalSlider');
+
+    sliderStory.ev.on('rsAfterSlideChange', function(e,type) {
+        var currentSlide = sliderStory.currSlide;
+        if( sliderStory.currSlide ) {
+          var $head = sliderStory.currSlide.holder.find('h1');
+          var $body = sliderStory.currSlide.holder.find('p');
+          var $line = sliderStory.currSlide.holder.find('.style-line');
+          $($head).addClass('animate fadeIn delay-1');
+          $($line).addClass('animate fadeIn delay-1');
+          $($body).addClass('animate fadeIn delay-2');
+
+        } else {
+          var $head2 = sliderStory.holder.find('h1');
+          var $body2 = sliderStory.holder.find('p');
+          $($head2).removeClass('animate fadeIn delay-1');
+          $($body2).removeClass('animate fadeIn delay-2');
+        }
+        sliderStory.currSlide.holder.transition({
+          opacity: 1,
+          duration: 500,
+          easing: 'in',
+          delay: 500
+        });
+    });
+
+        
     $.get( dataUrl, function( data ) {
 
-    console.log(data);
       $.each(data, function(i, item) {
         var body = data[i].body_html,title = data[i].title,id = data[i].handle;
-        console.log(data[i].author);
-
+        sliderStory.appendSlide('<section id="'+ id +'" href="#'+ id +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ title +'</h1><hr class="style-line"><p class="">'+ body +'</p></div></div></figure></section>');
+        {% comment %}attach.append('<section id="'+ id +'" href="#'+ id +'" class="big-stretch"><figure class="inner"><div class="inner-stretch"><h1 class="h1">'+ title +'</h1><hr class="style-line"><p>'+ body +'</p></div></figure></section>');{% endcomment %}
+        timber.largeImageResize();
       });
-    
-
     }, 'json');
   });
+
+}
   
 };
+
+timber.carouselScroll = function(){
+  {% comment %}$(function(){
+    var WineSwiper = $('#wines .swiper-container').swiper({
+      mode : 'horizontal',
+      speed: 700,
+      updateOnImagesReady: true,
+      centeredSlides: true,
+      slidesPerView: 'auto'
+    });
+  });{% endcomment %}
+
+  window.onload = function() {
+      var WineSwiper = new Swiper('#wines .swiper-container', {
+        mode:'horizontal',
+        loop: false,
+        updateOnImagesReady: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        onSlideChangeEnd: function(WineSwiper){
+          infoEffectIn('.swiper-slide-active .bag-info');
+          $(this).addClass('this-is-active');
+        },
+        onSlidePrev: function(WineSwiper){
+          infoEffectOut('.swiper-slide .bag-info');
+        },
+        onSlideNext: function(WineSwiper){
+          infoEffectOut('.swiper-slide .bag-info');
+        }
+      });
+
+      function infoEffectIn(element){
+        $(element).transition({
+          opacity: 1
+        });
+      }
+      function infoEffectOut(element){
+        $(element).transition({
+          opacity: 0
+        });
+      }
+
+      $('.arrow-left').on('click', function(e){
+        e.preventDefault();
+        WineSwiper.swipePrev();
+      });
+
+      $('.arrow-right').on('click', function(e){
+        e.preventDefault();
+        WineSwiper.swipeNext();
+      });  
+  }
+
+};
+
+timber.jsonProductBuild = function() {
+  
+}
+
+  
+
 
 // Initialize Timber's JS on docready
 $(timber.init)

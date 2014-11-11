@@ -196,6 +196,8 @@
   {% include 'ajax-cart-template' %}
   {{ 'ajaxify.js' | asset_url | script_tag }}
   {{ 'transitions.js' | asset_url | script_tag }}
+  {{ 'royalslider.min.js' | asset_url | script_tag }}
+  {{ 'swiper-slider.js' | asset_url | script_tag }}
   <script>
   jQuery(function($) {
     ajaxifyShopify.init({
@@ -213,6 +215,27 @@
       enableQtySelectors: true, // Enable the quantity selectors on your templates, even if disableAjaxCart is false. Default is true.
       prependDrawerTo: '.site-header .grid--full' // The element selector where the cart is prepended. This is used for the drawer and flip methods. Default is 'body'.
     });
+  });
+  </script>
+  <script>
+  jQuery(function($) {
+    if ($('#wines').length){
+      ajaxifyShopify.init({
+        method: '{{ settings.ajax_cart_method }}', // Method options are drawer, modal, and flip. Default is drawer.
+        wrapperClass: 'hello', // The class that defines your site width. Default is null.
+        formSelector: '.add-collection-item', // Default is form[action^="/cart/add"].
+        addToCartSelector: '.addToCartC', // Default is input[type="submit"] within 'formSelector'.
+        cartCountSelector: '#cartCount', // Update number of items in the cart when a product is added. Default is null.
+        cartCostSelector: '#cartCost', // Update the total cart cost when a product is added. Default is null.
+        toggleCartButton: '#cartToggle', // To toggle drawer/modal cart, include the selector here. Default is null and will take you to /cart page.
+        useCartTemplate: true, // True to use cart.liquid markup. False to use handlebars.js for template. Default is true.
+        btnClass: 'btn', // Your main button class for styling purposes if useCartTemplate is set to false. Default is null.
+        moneyFormat: {{ shop.money_format | json }}, // Your shop money format, defined in liquid.
+        disableAjaxCart: false, // If for some reason you want to disable the cart, set to true. Default is false.
+        enableQtySelectors: true, // Enable the quantity selectors on your templates, even if disableAjaxCart is false. Default is true.
+        prependDrawerTo: '.site-header .grid--full' // The element selector where the cart is prepended. This is used for the drawer and flip methods. Default is 'body'.
+      });
+    }
   });
   </script>
   {% endif %}

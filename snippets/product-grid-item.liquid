@@ -46,7 +46,7 @@
 {% comment %}
   Set a class for sold-out and on-sale items
 {% endcomment %}
-<div class="grid-item {{grid_item_width}}{% if sold_out %} sold-out{% endif %}{% if on_sale %} on-sale{% endif %}">
+<div class="product {% if sold_out %} sold-out{% endif %}{% if on_sale %} on-sale{% endif %}">
 
   {% comment %}
     Link to your product with the 'within: collection' filter for the link to be aware of the collection.
@@ -64,10 +64,10 @@
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
   </a>
 
-  <p class="h6">
+  <p class="h6" style="display: none;">
     <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
   </p>
-  <p>
+  <p style="display: none;">
     {% comment %}
       You can show a leading 'from' or 'up to' by checking 'product.price_varies'
       if your variants have different prices.

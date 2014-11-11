@@ -5,29 +5,32 @@
 
 {% endcomment %}
 
-{% paginate collection.products by 12 %}
-
-{% include 'breadcrumb' %}
-
 <div class="grid">
 
-  <div class="grid-item large--one-quarter">
-    {% include 'collection-sidebar' %}
-  </div>
+  <div class="arrow-left"><a href="#"></a></div>
 
-  <div class="grid-item large--three-quarters">
+<div class="wrapper" id="collection-slider">
+
+{% paginate collection.products by 12 %}
+
+{% comment %}{% include 'breadcrumb' %}{% endcomment %}
+
+{% comment %}  <div class="grid-item large--one-whole">
+    {% include 'collection-sidebar' %}
+  </div>{% endcomment %}
+
+  <div class="grid-item large--one-whole">
 
     {% comment %}
       Different markup if a collection description exists
     {% endcomment %}
-    {% if collection.description != blank %}
+    {% comment %}{% if collection.description != blank %}
       <header class="section-header">
         <h1 class="section-header--title">{{ collection.title }}</h1>
         <div class="rte rte--header">
           {{ collection.description }}
         </div>
       </header>
-      <hr>
       <div class="section-header">
         <div class="section-header--right">
           {% include 'collection-sorting' %}
@@ -42,22 +45,68 @@
         {% include 'collection-views' %}
       </div>
     </header>
-    {% endif %}
+    {% endif %}{% endcomment %}
 
     {% comment %}
       Use class grid-uniform to have evenly sized columns clear
       each other properly at each breakpoint.
     {% endcomment %}
-    <div class="grid-uniform">
+    <div id="wines" class="grid-uniform">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
 
       {% comment %}
         Loop through our products in the current collection.
         See the snippet 'product-grid-item' for the layout.
       {% endcomment %}
+      {% unless grid_item_width %}
+        {% assign grid_item_width = 'large--one-eighth medium--one-half' %}
+      {% endunless %}
       {% for product in collection.products %}
+      <div id="{{ product.title | downcase | replace: ' ', '-' }}" class="grid-item {{grid_item_width}} swiper-slide">
+        <form action="/cart/add" method="post" enctype="multipart/form-data" class="add-collection-item">
 
-        {% include 'product-grid-item' %}
+          {% comment %}
+            This the wrap element for the info for the products in collection
+            ----> .bag-info
+          {% endcomment %}
+          <figure class="bag-info">
+            <select name="id" id="productSelect" class="product-variants" style="display: none;">
+              {% for variant in product.variants %}
+                {% if variant.available %}
 
+                  {% comment %}
+                    Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                  {% endcomment %}
+                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                {% else %}
+                  <option disabled="disabled">
+                    {{ variant.title }} - Sold out
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <span class="h3 product-price {% if product.compare_at_price > product.price %} on-sale{% endif %}" itemprop="price">
+              {{ product.price | money }}
+            </span>
+            <h4><a href="{{ product.url | within: collection }}" class="product-grid-image">Tasting Notes</a></h4>
+            {% if product.compare_at_price > product.price %}
+              <p class="compare-price" style="display: none;" class="h5">
+                Compare at: {{ product.compare_at_price_max | money }}
+              </p>
+            {% endif %}
+            <label for="quantity" class="quantity-selector">Qty</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+            <button type="submit" name="add" class="btn addToCartC">
+              <span class="addToCartCText">Add to Cart</span>
+            </button>
+          </figure>
+
+            {% include 'product-grid-item' %}
+
+        </form>
+      </div>
       {% else %}
 
         <div class="grid-item">
@@ -65,7 +114,8 @@
         </div>
 
       {% endfor %}
-
+        </div>
+      </div>
     </div>
 
     {% if paginate.pages > 1 %}
@@ -78,6 +128,10 @@
 
   </div>
 
+{% endpaginate %}
+
 </div>
 
-{% endpaginate %}
+<div class="arrow-right"><a href="#"></a></div>
+
+</div>
