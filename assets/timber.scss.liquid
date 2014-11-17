@@ -1957,6 +1957,10 @@ label.error {
 /*============================================================================
   #Site Header
 ==============================================================================*/
+.mobile-navbar,
+.mobile-nav{
+  display: none;
+}
 .site-header {
   padding: $gutter/1 0;
   background: $colorHeadFoot;
@@ -1969,7 +1973,7 @@ label.error {
     padding: $gutter/9 0;
   }
 
-  @include at-query ($min, $large) {
+  /*@include at-query ($min, $large) {*/
     .grid {
       display: table;
       table-layout: fixed;
@@ -2033,8 +2037,9 @@ label.error {
         padding-top: 20px;
       }
     }
-  }
+  /*}*/
 }
+
 
 .header-logo {
   text-align: center;
@@ -2078,6 +2083,24 @@ label.error {
 ==============================================================================*/
 .nav-bar {
 
+  & > #mobile-button{
+    display: none;
+  }
+
+  @media screen and (max-width: $small) {
+
+    float: left;
+    width: 48%;
+    padding-bottom: 9%;
+
+    & > #mobile-button{
+      display: block;
+    }
+    & > .main-nav{
+      display: none;
+    }
+  }
+
   a {
     color: $colorNavText;
 
@@ -2100,6 +2123,17 @@ label.error {
   li {
     margin: 0;
   }
+}
+
+.mobile-nav{
+  clear: both;
+  width: 100%;
+  background: #231f20;
+  height: 0px;
+  overflow: hidden;
+}
+.mobile-nav li{
+  width: 100%;
 }
 
 .site-nav {
@@ -2496,9 +2530,9 @@ label.error {
   width: 1280px;
   height: 660px;
 }
-#wines .swiper-container .swiper-wrapper{
-  width: 100% !important;
-}
+/*#wines .swiper-container .swiper-wrapper{
+  padding: 0 0 0 0 !important;
+}*/
 #wines .swiper-container .swiper-wrapper .swiper-slide{
   @include opacity(0.7);
   text-align: center;
@@ -2647,6 +2681,10 @@ height: 100%;
     display: block;
     width: 44%;
     margin: 0 auto;
+  }
+
+  & > div form#addToCartForm .selector-wrapper select{
+    max-width: 100%;
   }
 }
 
@@ -3719,4 +3757,99 @@ Pagination Styles
 .swiper-visible-switch {
   /* Specific visible button style: */  
   
+}
+
+
+/* ===============================================================
+Media Queries
+================================================================*/
+
+@media screen and (max-width: $small) {
+
+  .site-header, .site-footer{
+    position: relative;
+    padding: $gutter/3 0;
+  }
+  .cart-checkout #checkout{
+    display: none;
+  }
+  .main-content{
+    margin-top: 0px;
+    padding-bottom: 0px;
+  }
+  .inner-wrap h1{
+    margin-top: -135px;
+  }
+  .inner-wrap h1 img,
+  .inner-wrap h3 img{
+    width: 98%;
+    height: auto;
+  }
+
+  .mobile-logo{
+    float: right;
+    width: 48%;
+  }
+  .mobile-nav{
+    display: block;
+  }
+  .mobile-navbar{
+    float: left;
+    width: 48%;
+    padding-left: 20px;
+    display: block;
+
+    & > #mobile-button img.open{
+      display: none;
+    }
+    & > #mobile-button img.closed{
+      display: block;
+    }
+  }
+  .header-logo {
+    text-align: right;
+    font-size: em(40px);
+    margin: 0 16px 8px;
+    max-width: 90px;
+    float: right;
+  }
+  #wines .swiper-container {
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
+  }
+  #collection-slider{
+    display: block;
+  }
+  .swiper-container .swiper-wrapper{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 450px;
+    height: 100%;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide .product{
+    height: 75%;
+    position: relative;
+  }
+  .product-grid-image{
+    height: 86%;
+  }
+  .product-grid-image img {
+    height: 70%;
+  }
+
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .bag-info,
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .product{
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  .big-stretch .inner>.inner-stretch {
+    padding: 0 0%;
+  }
+
+
 }

@@ -98,7 +98,7 @@
 
       <div class="grid--full">
         
-        <div class="grid-item large--one-twelfth large--text-right">
+        <div class="grid-item mobile-logo large--one-twelfth large--text-right">
           {% comment %}
             Use the uploaded logo from theme settings if enabled.
             Site name gets precedence with H1 tag on homepage, div on other pages.
@@ -121,7 +121,7 @@
             </div>
           {% endif %}
         </div>
-
+      
         <nav class="nav-bar grid-item large--two-thirds" role="navigation">
             <div class="grid-item cart-checkout large--one-third large--text-left">
 
@@ -166,6 +166,15 @@
               </div>
             </div> -->
         </nav>
+        <div class="mobile-navbar">
+          <div id="mobile-button">
+            <img class="closed" src="{{ 'mobile-menu-icon.png' | asset_url }}" alt="mobile menu icon" itemprop="mobile-button">
+            <img class="open" src="{{ 'mobile-menu-icon-active.png' | asset_url }}" alt="mobile menu icon" itemprop="mobile-button">
+          </div>
+        </div>
+        <div class="mobile-nav">
+          {% include 'site-nav' %}
+        </div>
 
     </div>
   </header>

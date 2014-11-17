@@ -82,7 +82,7 @@
         See the snippet 'product-grid-item' for the layout.
       {% endcomment %}
       {% unless grid_item_width %}
-        {% assign grid_item_width = 'large--one-eighth medium--one-half' %}
+        {% assign grid_item_width = 'large--two-twelfths medium--one-half' %}
       {% endunless %}
       {% for product in collection.products %}
       <div id="{{ product.title | downcase | replace: ' ', '-' }}" class="grid-item {{grid_item_width}} swiper-slide">
