@@ -52,7 +52,7 @@
 
   <!-- Helpers ================================================== -->
   <link rel="canonical" href="{{ canonical_url }}">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
@@ -97,41 +97,6 @@
   <header class="site-header" role="banner">
 
       <div class="grid--full">
-        {% if template == 'index' %}
-          {% else %}
-        <div class="grid-item cart-checkout large--one-twelfth text-center large--text-right">
-          {% comment %}
-            You cart/checkout link should at least show the number of items in it.
-            Below shows the item count followed by item(s) and the total cart price.
-
-            Ajaxify Cart Notes:
-              - #cartToggle toggles cart visibility (drawer or modal)
-              - #cartCount updates the total number of items in the cart
-              - #cartCost updates the total cost of the cart
-              - Documentation:  http://shopify.com/timber#ajax-cart
-          {% endcomment %}
-          <a href="/cart" id="cartToggle">
-            Cart (<span id="cartCount">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'item', 'items' }} <span id="cartCost">{{ cart.total_price | money }}</span>)
-          </a>
-
-          {% comment %}
-            If customer accounts are enabled, provide login and create account links
-          {% endcomment %}
-          {% if shop.customer_accounts_enabled %}
-          <p class="site-header--text-links">
-            {% if customer %}
-              Logged in as <a href="/account">{{ customer.first_name }}</a> &middot; {{ 'Log out' | customer_logout_link }}
-            {% else %}
-              {{ 'Log in' | customer_login_link }}
-              {% if shop.customer_accounts_optional %}
-              or {{ 'Create an account' | customer_register_link }}
-              {% endif %}
-            {% endif %}
-          </p>
-          {% endif %}
-        </div>
-
-        {% endif %}
         
         <div class="grid-item large--one-twelfth large--text-right">
           {% comment %}
@@ -158,6 +123,40 @@
         </div>
 
         <nav class="nav-bar grid-item large--two-thirds" role="navigation">
+            <div class="grid-item cart-checkout large--one-third large--text-left">
+
+              {% if template == 'index' %}
+                <a href="/pages/our-store" id="checkout">
+                  Shop
+                </a>
+              {% else %}
+                <a href="/cart" id="cartToggle">
+                  Cart (<span id="cartCount">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'item', 'items' }} <span id="cartCost">{{ cart.total_price | money }}</span>)
+                </a>
+                <a href="/checkout" id="checkout">
+                  Checkout
+                </a>
+              {% endif %}
+
+              {% comment %}
+                If customer accounts are enabled, provide login and create account links
+              {% endcomment %}
+              {% if shop.customer_accounts_enabled %}
+              <p class="site-header--text-links">
+                {% if customer %}
+                  Logged in as <a href="/account">{{ customer.first_name }}</a> &middot; {{ 'Log out' | customer_logout_link }}
+                {% else %}
+                  {{ 'Log in' | customer_login_link }}
+                  {% if shop.customer_accounts_optional %}
+                  or {{ 'Create an account' | customer_register_link }}
+                  {% endif %}
+                {% endif %}
+              </p>
+              {% endif %}
+
+            </div>
+
+
             <div class="main-nav">
               {% include 'site-nav' %}
             </div>

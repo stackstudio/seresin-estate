@@ -7,9 +7,9 @@
 
 <div class="grid">
 
-  <div class="arrow-left"><a href="#"></a></div>
-
 <div class="wrapper" id="collection-slider">
+
+  <div class="arrow-left"><a href="#"></a></div>
 
 {% paginate collection.products by 12 %}
 
@@ -52,7 +52,29 @@
       each other properly at each breakpoint.
     {% endcomment %}
     <div id="wines" class="grid-uniform">
-      <div class="swiper-container">
+      <div class="swiper-container" style="{{ type_width }}">
+      <div id="types" class="grid-item large--one-eighth">
+        {% if collection.all_types.size > 0 %}
+            <ul>
+              {% for type in collection.all_types %}
+                {% if collection.current_type == type %}
+                {% unless type_width %}
+                  {% assign type_width = '350px' %}
+                {% endunless %}
+                  <li class="active-filter">
+                    {{ type }}
+                  </li>
+                {% else %}
+                  <li>
+                    {{ type | link_to_type }}
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>Add a type to your products for this list to build itself. All lists are created in <strong>collection-sidebar.liquid</strong>.</p>
+          {% endif %}
+      </div>
         <div class="swiper-wrapper">
 
       {% comment %}
@@ -90,7 +112,7 @@
             <span class="h3 product-price {% if product.compare_at_price > product.price %} on-sale{% endif %}" itemprop="price">
               {{ product.price | money }}
             </span>
-            <h4><a href="{{ product.url | within: collection }}" class="product-grid-image">Tasting Notes</a></h4>
+            {% comment %}<h4><a href="{{ product.url | within: collection }}" class="product-grid-image">Tasting Notes</a></h4>{% endcomment %}
             {% if product.compare_at_price > product.price %}
               <p class="compare-price" style="display: none;" class="h5">
                 Compare at: {{ product.compare_at_price_max | money }}
@@ -130,8 +152,8 @@
 
 {% endpaginate %}
 
-</div>
-
 <div class="arrow-right"><a href="#"></a></div>
+
+</div>
 
 </div>

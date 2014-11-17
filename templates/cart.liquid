@@ -29,7 +29,7 @@
         <div class="grid-item large--one-half">
           <div class="grid">
 
-            <div class="grid-item one-third">
+            <div class="grid-item one-third image">
               <a href="{{ item.url | within: collections.all }}">
 
                 {% comment %}
@@ -94,23 +94,23 @@
         <div class="grid-item large--one-half">
           <div class="grid">
 
-            <div class="grid-item one-third medium-down--one-third text-right">
+            <div class="grid-item one-third medium-down--one-third ">
               {% comment %}
                 Added data-id for the ajax cart implementation only.
               {% endcomment %}
               <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" data-id="{{ item.id }}">
             </div>
 
-            <div class="grid-item one-third medium-down--one-third medium-down--text-left text-right">
+            <div class="grid-item one-third medium-down--one-third medium-down--text-left">
               <span class="h4">{{ item.price | money }}</span>
             </div>
 
-            <div class="grid-item one-third medium-down--one-third text-right">
+            <div class="grid-item one-third medium-down--one-third">
               {% comment %}
                 To remove an item from the cart, reload the page with the following parameters.
                 Added data-id for the ajax cart implementation only.
               {% endcomment %}
-              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" data-id="{{ item.id }}">Remove</a>
+              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" data-id="{{ item.id }}">x</a>
             </div>
 
           </div>
@@ -139,29 +139,31 @@
         {% comment %}
           If notes are used, adjust the column width
         {% endcomment %}
-        <div class="grid-item text-right {% if settings.cart_notes_enable %}large--one-half{% endif %}">
+        <div class="grid-item {% if settings.cart_notes_enable %}large--one-half{% endif %}">
 
           <div class="cart-subtotal">
             Subtotal
             <span class="h1 cart-subtotal--price">{{ cart.total_price | money }}</span>
           </div>
+          <div class="cart-payment">
+            {% comment %}
+              name="update" is required for the update button to work
+            {% endcomment %}
+            <input type="submit" name="update" class="btn-secondary update-cart" value="Update cart">
 
-          {% comment %}
-            name="update" is required for the update button to work
-          {% endcomment %}
-          <input type="submit" name="update" class="btn-secondary update-cart" value="Update cart">
-
-          {% comment %}
-            name="checkout" is required for the submit button to work
-          {% endcomment %}
-          <input type="submit" name="checkout" class="btn" value="Check out">
-
-          {% comment %}
-            Paypal and Google checkout buttons
-          {% endcomment %}
-          {% if additional_checkout_buttons %}
-            <p>{{ content_for_additional_checkout_buttons }}</p>
-          {% endif %}
+            {% comment %}
+              name="checkout" is required for the submit button to work
+            {% endcomment %}
+            <input type="submit" name="checkout" class="btn" value="Check out">
+          </div>
+          <div class="cart-others">
+            {% comment %}
+              Paypal and Google checkout buttons
+            {% endcomment %}
+            {% if additional_checkout_buttons %}
+              <div class="other-payment">{{ content_for_additional_checkout_buttons }}</div>
+            {% endif %}
+          </div>
 
         </div>
 
@@ -176,8 +178,13 @@
     It's likely people won't have items in the cart sometimes.
     Do something fun here, it's a great chance to show your company's human side.
   {% endcomment %}
-
-  <h2>It appears that your cart is currently empty.</h2>
-  <p>Continue browsing <a href="/collections/all">here</a>.</p>
+  <section id="empty-cart">
+    <div class="wrap">
+      <div class="inner-wrap">
+        <h1 class="h1">It appears that your cart is currently empty.</h1>
+        <h3 class="h3">Continue browsing <a href="/collections/all">here</a>.</h3>
+      </div>
+    </div>
+  </section
 
 {% endif %}

@@ -30,6 +30,7 @@ timber.init = function () {
   timber.preloadImages();
   timber.carouselScroll();
   timber.jsonProductBuild();
+  timber.productSlider();
 };
 
 timber.preloadImages = function() {
@@ -226,8 +227,10 @@ timber.largeImageResize = function () {
         $('.image-bigger').css('height',windowsize -footerHeight);
         $('.store-large').css('height',windowsize -footerHeight);
         $('.article-container-land').css('height',windowsize -footerHeight -remainHeight);
-        $('#collection-slider').css('height',windowsize -footerHeight -remainHeight);
-        $('#collection-slider').css('marginTop',top);
+        $('#collection-slider').css('height',windowsize -footerHeight -top);
+        $('#product-main').css('height',windowsize -footerHeight -top);
+        $('#collection-slider, #product-main').css('marginTop',top);
+        $('#empty-cart').css('height',windowsize -footerHeight);
     }
     // Execute on load
     checkWidth();
@@ -244,6 +247,7 @@ timber.pagesScroll = function() {
 
 timber.loadBg = function() {
 
+  $(".store-large .inner-wrap h1:eq(0), .store-large .inner-wrap h1:eq(1)").wrapAll("<div id='top-wines'></div>")
   
 };
 
@@ -256,11 +260,18 @@ timber.Geo = function() {
       success: function(location) {
       var code = location.country_code;
       var country = location.country_name;
+      var div = $('#store-front');
         if (code === 'GB') {
           //window.location.href = 'http://shop-in-canada.myshopify.com';
-          var div = $('#location');
-          div.html('<h1>As you are based in '+country+' we have a store that sells our wine.</h1><h2>Please visit our '+code+' seller <a href="http://www.google.co.uk">here</a>.</h2>');
-          console.log('you are in the "'+ code +'"');
+          div.css("background-image", "url('{{ "uk-background.png" | asset_url }}')");
+          div.html('<div class="wrap"><div class="inner-wrap"><h1 class="animate fadeIn step-1">Welcome to the <br><a href="http://www.google.co.uk">'+code+' store</a></h1></div></div>');          
+        } else if(code === 'US') {
+          div.css("background-image", "url('{{ "us-background.png" | asset_url }}')");
+          div.html('<div class="wrap"><div class="inner-wrap"><h1 class="animate fadeIn step-1">Welcome to the <br><a href="http://www.google.co.uk">'+code+' store</a></h1></div></div>');          
+        } else if(code === 'NZ') {
+          nz_bg = {{ "3.png" || asset_url }};
+          div.css("background-image", "url('{{ "nz-background.png" | asset_url }}')");
+          div.html('<div class="wrap"><div class="inner-wrap"><h1 class="animate fadeIn step-1">Welcome to the <br><a href="http://www.google.co.uk">'+code+' store</a></h1></div></div>');
         }
       }
     });
@@ -305,9 +316,9 @@ if ($('body#our-story').length){
           var $head = sliderStory.currSlide.holder.find('h1');
           var $body = sliderStory.currSlide.holder.find('p');
           var $line = sliderStory.currSlide.holder.find('.style-line');
-          $($head).addClass('animate fadeIn delay-1');
+          {% comment %}$($head).addClass('animate fadeIn delay-1');
           $($line).addClass('animate fadeIn delay-1');
-          $($body).addClass('animate fadeIn delay-2');
+          $($body).addClass('animate fadeIn delay-2');{% endcomment %}
 
         } else {
           var $head2 = sliderStory.holder.find('h1');
@@ -315,12 +326,12 @@ if ($('body#our-story').length){
           $($head2).removeClass('animate fadeIn delay-1');
           $($body2).removeClass('animate fadeIn delay-2');
         }
-        sliderStory.currSlide.holder.transition({
+        {% comment %}sliderStory.currSlide.holder.transition({
           opacity: 1,
           duration: 500,
           easing: 'in',
           delay: 500
-        });
+        });{% endcomment %}
     });
 
         
@@ -395,7 +406,34 @@ timber.carouselScroll = function(){
 
 timber.jsonProductBuild = function() {
   
-}
+};
+
+timber.productSlider = function() {
+
+  var sliderProduct = $('#productThumbs').royalSlider({
+      arrowsNav: true,
+      arrowsNavAutoHide: false,
+      fadeinLoadedSlide: true,
+      controlNavigation: 'none',
+      imageAlignCenter:true,
+      loop: false,
+      loopRewind: false,
+      numImagesToPreload: 6,
+      slidesOrientation: 'horizontal',
+      keyboardNavEnabled: true,
+      addActiveClass: true,
+      imageScaleMode: 'fill',
+      arrowsNavAutoHide: false,
+      autoScaleSlider: false, 
+      autoScaleSliderWidth: 1960,     
+      autoScaleSliderHeight: 800,
+      video: {
+        autoHideArrows:true,
+        autoHideControlNav:true
+      },  
+    }).data('royalSlider');
+  
+};
 
   
 

@@ -722,6 +722,7 @@ var ajaxifyShopify = (function(module, $) {
       // Toggle the cart, based on the method
       $toggleCartButton.on('click', function(e) {
         $(this).parent().css('position','relative');
+        //$(this).parent().css('display', 'left');
         e.preventDefault();
 
         switch (settings.method) {
