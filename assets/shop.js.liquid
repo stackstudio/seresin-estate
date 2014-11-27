@@ -33,6 +33,7 @@ timber.init = function () {
   timber.productSlider();
   timber.buildProducts();
   timber.mobileNav();
+  timber.video();
 };
 
 timber.preloadImages = function() {
@@ -241,9 +242,10 @@ timber.largeImageResize = function () {
         $('.image-bigger').css('height',windowsize -footerHeight);
         $('.store-large').css('height',windowsize -footerHeight);
         $('.article-container-land').css('height',windowsize -footerHeight -remainHeight);
-        $('#collection-slider').css('height',windowsize -footerHeight -top);
+        {% comment %}$('#collection-slider').css('height',windowsize -footerHeight -top);{% endcomment %}
         $('#product-main').css('height',windowsize -footerHeight -top);
-        $('#collection-slider, #product-main').css('marginTop',top);
+        $('#the-products').css('height',windowsize -footerHeight -top);
+        $('#product-main,#the-products').css('marginTop',top);
         $('#empty-cart').css('height',windowsize -footerHeight);
     }
 
@@ -298,73 +300,82 @@ timber.Geo = function() {
 
 timber.getPages = function() {
 
-if ($('body#our-story').length){
+  if ($('body#our-story').length){
 
-  $.each( $("#data-urls li") , function () {
+    $.each( $("#data-urls li") , function () {
 
-    var dataUrl = $(this).attr('data-url');
-    var jsonObj = [];
+      var dataUrl = $(this).attr('data-url');
+      var jsonObj = [];
 
-    var sliderStory = $('.article-container-land').royalSlider({
-      arrowsNav: true,
-      arrowsNavAutoHide: false,
-      fadeinLoadedSlide: true,
-      controlNavigation: 'none',
-      imageAlignCenter:true,
-      loop: false,
-      loopRewind: false,
-      numImagesToPreload: 6,
-      slidesOrientation: 'vertical',
-      keyboardNavEnabled: true,
-      addActiveClass: true,
-      imageScaleMode: 'fill',
-      arrowsNavAutoHide: false,
-      autoScaleSlider: false, 
-      autoScaleSliderWidth: 1960,     
-      autoScaleSliderHeight: 800,
-      video: {
-        autoHideArrows:true,
-        autoHideControlNav:true
-      },  
-    }).data('royalSlider');
+      var sliderStory = $('.article-container-land').royalSlider({
+        arrowsNav: true,
+        arrowsNavAutoHide: false,
+        fadeinLoadedSlide: true,
+        controlNavigation: 'none',
+        imageAlignCenter:true,
+        loop: false,
+        loopRewind: false,
+        numImagesToPreload: 6,
+        slidesOrientation: 'vertical',
+        keyboardNavEnabled: true,
+        addActiveClass: true,
+        imageScaleMode: 'fill',
+        arrowsNavAutoHide: false,
+        autoScaleSlider: false, 
+        autoScaleSliderWidth: 1960,     
+        autoScaleSliderHeight: 800,
+        video: {
+          autoHideArrows:true,
+          autoHideControlNav:true
+        },  
+      }).data('royalSlider');
 
-    sliderStory.ev.on('rsAfterSlideChange', function(e,type) {
-        var currentSlide = sliderStory.currSlide;
-        if( sliderStory.currSlide ) {
-          var $head = sliderStory.currSlide.holder.find('h1');
-          var $body = sliderStory.currSlide.holder.find('p');
-          var $line = sliderStory.currSlide.holder.find('.style-line');
-          {% comment %}$($head).addClass('animate fadeIn delay-1');
-          $($line).addClass('animate fadeIn delay-1');
-          $($body).addClass('animate fadeIn delay-2');{% endcomment %}
+      sliderStory.ev.on('rsAfterSlideChange', function(e,type) {
+          var currentSlide = sliderStory.currSlide;
+          if( sliderStory.currSlide ) {
+            var $head = sliderStory.currSlide.holder.find('h1');
+            var $body = sliderStory.currSlide.holder.find('p');
+            var $line = sliderStory.currSlide.holder.find('.style-line');
+            {% comment %}$($head).addClass('animate fadeIn delay-1');
+            $($line).addClass('animate fadeIn delay-1');
+            $($body).addClass('animate fadeIn delay-2');{% endcomment %}
 
-        } else {
-          var $head2 = sliderStory.holder.find('h1');
-          var $body2 = sliderStory.holder.find('p');
-          $($head2).removeClass('animate fadeIn delay-1');
-          $($body2).removeClass('animate fadeIn delay-2');
+          } else {
+            var $head2 = sliderStory.holder.find('h1');
+            var $body2 = sliderStory.holder.find('p');
+            $($head2).removeClass('animate fadeIn delay-1');
+            $($body2).removeClass('animate fadeIn delay-2');
+          }
+          {% comment %}sliderStory.currSlide.holder.transition({
+            opacity: 1,
+            duration: 500,
+            easing: 'in',
+            delay: 500
+          });{% endcomment %}
+      });
+
+          
+      $.get( dataUrl, function( data ) {
+
+        $.each(data, function(i, item) {
+          var body = data[i].body_html,title = data[i].title,id = data[i].handle;
+          sliderStory.appendSlide('<section id="'+ id +'" href="#'+ id +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ title +'</h1><hr class="style-line"><p class="">'+ body +'</p></div></div></figure></section>');
+          timber.largeImageResize();
+        });
+      }, 'json').done(function() {
+
+        var h1 = $('#life-is-light .inner .inner-stretch h1');
+        var text = h1.text().split(' ');
+
+        for( var i = 1, len = text.length; i < len; i=i+2 ) {
+            text[i] = '<span class="italic">' + text[i] + '</span>';
         }
-        {% comment %}sliderStory.currSlide.holder.transition({
-          opacity: 1,
-          duration: 500,
-          easing: 'in',
-          delay: 500
-        });{% endcomment %}
+        h1.html(text.join(' '));
+
+      });
     });
 
-        
-    $.get( dataUrl, function( data ) {
-
-      $.each(data, function(i, item) {
-        var body = data[i].body_html,title = data[i].title,id = data[i].handle;
-        sliderStory.appendSlide('<section id="'+ id +'" href="#'+ id +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ title +'</h1><hr class="style-line"><p class="">'+ body +'</p></div></div></figure></section>');
-        {% comment %}attach.append('<section id="'+ id +'" href="#'+ id +'" class="big-stretch"><figure class="inner"><div class="inner-stretch"><h1 class="h1">'+ title +'</h1><hr class="style-line"><p>'+ body +'</p></div></figure></section>');{% endcomment %}
-        timber.largeImageResize();
-      });
-    }, 'json');
-  });
-
-}
+  }
   
 };
 
@@ -380,12 +391,22 @@ timber.carouselScroll = function(){
   });{% endcomment %}
 
   window.onload = function() {
+  slideIndex = 8;
       var WineSwiper = new Swiper('#wines .swiper-container', {
         mode:'horizontal',
         loop: false,
         updateOnImagesReady: true,
         centeredSlides: true,
         slidesPerView: 'auto',
+        initialSlide: slideIndex,
+        onInit : function (WineSwiper){
+          var activeSlide = WineSwiper.activeSlide();
+          var slideBag = $(activeSlide).find('.bag-info');
+
+          slideBag.transition({
+            opacity: 1
+          });
+        },
         onSlideChangeEnd: function(WineSwiper){
           infoEffectIn('.swiper-slide-active .bag-info');
           $(this).addClass('this-is-active');
@@ -466,6 +487,11 @@ timber.buildProducts = function() {
     });
 {% endcomment %}
 }
+
+timber.video = function() {
+
+  
+};
 
 timber.mobileNav = function() {
 

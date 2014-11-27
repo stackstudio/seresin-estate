@@ -98,7 +98,7 @@ $colorTextBody: {{ settings.color_body_text }};
 // Backgrounds
 $colorBody: {{ settings.color_body_bg }};
 
-$colorHeadFoot: #231F20;
+$colorHeadFoot: #000000;
 
 // Brand colours
 
@@ -1455,7 +1455,7 @@ img.auto,
   width: 100%;
   height: 100%;
   position: absolute;
-  @include bg-image(no-repeat, cover, center);
+  @include bg-image(no-repeat, cover, center -44%);
 }
 
 
@@ -2247,7 +2247,7 @@ label.error {
   color: $colorFooterText;
 
   @include at-query ($min, $large) {
-    padding: $gutter/1 0 $gutter/4 0;
+    padding: $gutter/1 0 $gutter/1 0;
   }
   @include at-query ($min, $large) {
     .grid {
@@ -2329,6 +2329,24 @@ label.error {
   #Generic Pages
 ==============================================================================*/
 
+#fullscreen-video { 
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+ background: url({{ "slide-image-1.jpg" || asset_url }}) no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
+
+
 .wrap{
   display: table;
   width: 100%;
@@ -2348,11 +2366,11 @@ label.error {
   & > h3{
     margin-left: -20px;
     font-size: 14px;
-    margin: 0;
+    margin-top: -9px;
   }
 }
 .store-large{
-  @include bg-image(no-repeat, cover, center);
+  @include bg-image(no-repeat, cover, 0 73%);
 }
 .store-large .inner-wrap{
 
@@ -2460,7 +2478,20 @@ label.error {
   
 }
 
+#top-wines:first-child{
+  background: url({{ "store-line.png" || asset_url }}) no-repeat bottom;
+}
 
+#product-holder{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+#product-inner{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
 
 .article-container-land .rsSlide{
   
@@ -2472,6 +2503,10 @@ label.error {
   & > .inner-stretch h1{
     color: #58595B;
     padding: 0 100px;
+
+    & > .italic{
+
+    }
   }
   & > .inner-stretch p{
     color: #58595B;
@@ -2485,13 +2520,21 @@ label.error {
   color: #58595B;
 
   & > .inner-stretch h1{
-    color: #58595B;
+    color: #fff;
   }
   & > .inner-stretch p{
-    color: #58595B;
+    color: #fff;
   }
   & > .inner-stretch hr.style-line{
-    background: url({{ "style-line-dark.png" || asset_url }}) no-repeat center;
+    background: url({{ "style-line.png" || asset_url }}) no-repeat center;
+  }
+  & > .inner-stretch{
+    padding: 0px;
+  }
+  & > .inner-stretch .box{
+    float:right;
+    width: 24%;
+    margin-right: 13%;
   }
 }
 #our-land .inner{
@@ -2517,6 +2560,16 @@ label.error {
   }
 }
 
+#our-biodynamics .inner{
+  & > .inner-stretch{
+    padding: 0px;
+  }
+  & > .inner-stretch .box{
+    float:right;
+    width: 24%;
+    margin-right: 13%;
+  }
+}
 
 
 #collection-slider{
@@ -2531,11 +2584,12 @@ label.error {
   height: 660px;
 }
 /*#wines .swiper-container .swiper-wrapper{
-  padding: 0 0 0 0 !important;
+  width: 100% !important;
 }*/
 #wines .swiper-container .swiper-wrapper .swiper-slide{
   @include opacity(0.7);
   text-align: center;
+  width: 200px;
 
   & > form .product{
     position: absolute;
@@ -2751,7 +2805,7 @@ height: 100%;
 
 #life-is-light {
   background-image: url({{ "life-is-light-bg-default.png" | asset_url }});
-  @include bg-image(no-repeat, cover, center);
+  @include bg-image(no-repeat, cover, right 61%);
 }
 #our-biodynamics{
   background-image: url({{ "biodynamics-bg-default.png" | asset_url }});
@@ -2763,7 +2817,7 @@ height: 100%;
 }
 #the-people{
   background-image: url({{ "people-bg-default.png" | asset_url }});
-  @include bg-image(no-repeat, cover, left bottom);
+  @include bg-image(no-repeat, cover, left 44%);
 }
 
 /*============================================================================

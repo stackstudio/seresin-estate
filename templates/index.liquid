@@ -1,11 +1,11 @@
 {% comment %}
-
   This is the homepage of seresin.
   Features included:
     - Full screen image
     - Animated text to fade in on page load
     - responsive full bleed
 {% endcomment %}
+
 {% if settings.show-slide-1 %}
 <div class="image-bigger" style="background-image: url({{ 'slide-image-1.jpg' | asset_url }});">
 
@@ -18,8 +18,18 @@
 
 </div>
 {% endif %}
-{% comment %}{% if settings.show-slide-content-1 == false and settings.slide-link-1.size > 0 %}
-          <a href="{{ settings.slide-link-1 }}">
-          </a>
-        {% else %}
-        {% endif %}{% endcomment %}
+
+{% comment %}<video class="image-bigger" autoplay poster="{% if settings.show-slide-1 %}{{ 'slide-image-1.jpg' | asset_url }}{% endif %}" id="fullscreen-video">
+  <source src="{{ 'SKY_MOCK.mp4.mp4' | asset_url }}" type="video/mp4">
+  <source src="{{ 'intro-detail-h1.png' | asset_url }}" type="video/ogv">
+    <source src="{{ 'intro-detail-h1.png' | asset_url }}" type="video/webm">
+</video>
+{% endcomment %}
+
+{% comment %}
+{% if settings.show-slide-content-1 == false and settings.slide-link-1.size > 0 %}
+<a href="{{ settings.slide-link-1 }}">
+</a>
+{% else %}
+{% endif %}
+{% endcomment %}
