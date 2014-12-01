@@ -46,6 +46,16 @@
       <li {% if link.active %}class="site-nav--active"{% endif %}>
         <a class="openFade" href="{{ link.url }}">{{ link.title }}</a>
       </li>
-    {% endif %}
+      {% endif %}
   {% endfor %}
+  {% if collection.current_type %}
+      <ul class="site-nav--dropdown">
+        {% for link in linklists.our-store.links %}
+          <li {% if link.active %}class="site-nav--active"{% endif %}>
+            <a class="openFade" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
 </ul>
+

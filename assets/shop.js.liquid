@@ -34,6 +34,7 @@ timber.init = function () {
   timber.buildProducts();
   timber.mobileNav();
   timber.video();
+  timber.productTypes();
 };
 
 timber.preloadImages = function() {
@@ -231,6 +232,7 @@ timber.largeImageResize = function () {
     $('.image-bigger').parent().css('height',windowsize -footerHeight);
     $('.article-container-land').css('height',windowsize -footerHeight -remainHeight);
     $('body').addClass('mobile-active');
+    $('#wines .swiper-container').css('width',$window.width())
     {% comment %}$('.main-content').css('height',windowsize -footerHeight);{% endcomment %}
   } else {
 
@@ -242,10 +244,11 @@ timber.largeImageResize = function () {
         $('.image-bigger').css('height',windowsize -footerHeight);
         $('.store-large').css('height',windowsize -footerHeight);
         $('.article-container-land').css('height',windowsize -footerHeight -remainHeight);
-        {% comment %}$('#collection-slider').css('height',windowsize -footerHeight -top);{% endcomment %}
+        $('#types').css('height',windowsize -footerHeight -top);
         $('#product-main').css('height',windowsize -footerHeight -top);
         $('#the-products').css('height',windowsize -footerHeight -top);
-        $('#product-main,#the-products').css('marginTop',top);
+        $('#product-actual').css('height',windowsize -footerHeight -top);
+        $('#the-products,#types, #product-actual').css('marginTop',top);
         $('#empty-cart').css('height',windowsize -footerHeight);
     }
 
@@ -391,7 +394,7 @@ timber.carouselScroll = function(){
   });{% endcomment %}
 
   window.onload = function() {
-  slideIndex = 8;
+      slideIndex = 4;
       var WineSwiper = new Swiper('#wines .swiper-container', {
         mode:'horizontal',
         loop: false,
@@ -440,6 +443,53 @@ timber.carouselScroll = function(){
         WineSwiper.swipeNext();
       });  
   }
+
+  {% comment %}Doing the filter function here{% endcomment %}
+
+  var flag = false;
+  $('#product-filter').parent().addClass('shut');
+  $('#product-filter').bind('touchstart click', function(e){
+    var open = $(this).find('.open');
+    var close = $(this).find('.closed');
+
+    if (!flag) {
+      flag = true;
+      setTimeout(function(){ flag = false }, 100);
+
+      if ( $(this).parent().hasClass('shut') ){
+      close.css('display','none');
+      open.css('display','block');
+      $(this).parent().removeClass('shut').addClass('open');
+        $(this).parent().transition({
+          left: 0,
+          duration : 300,
+          easing : 'easeInOutExpo',
+          zIndex: 9999999
+        });
+      } else {
+      $(this).parent().addClass('shut').removeClass('open');
+      close.css('display','block');
+      open.css('display','none');
+        $(this).parent().transition({
+          left: -307,
+          duration : 300,
+          easing : 'easeInOutExpo',
+          zIndex: '777777'
+        });
+      }
+    }
+    return false;
+  });
+
+{% comment %}  $('#product-filter').toggle(function () {
+    $(this).parent().transition({
+      left: 0
+    });
+  }, function() {
+  $(this).parent().transition({
+      left: -307
+    });
+  });{% endcomment %}
 
 };
 
@@ -561,7 +611,22 @@ timber.mobileNav = function() {
   });{% endcomment %}
 }
 
+timber.productTypes = function() {
+
+var productUrl = '/products.json';
+
+$.get( productUrl, function( data ) {
+
+  $.each(data, function(i, item) {
+    console.log(data);
+  });
+}, 'json').done(function() {
+
+  console.log();
+
+});
   
+};  
 
 
 // Initialize Timber's JS on docready

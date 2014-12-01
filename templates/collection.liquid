@@ -6,6 +6,36 @@
 {% endcomment %}
 
 <div class="grid" id="the-products">
+<div id="types" class="grid-item large--one-eighth">
+  <a id="product-filter" href="#">Filter <span>
+    <img class="closed" src="{{ 'mobile-menu-icon.png' | asset_url }}" alt="menu icon">
+    <img class="open" style="display: none;" src="{{ 'mobile-menu-icon-active.png' | asset_url }}" alt="mobile menu icon" itemprop="mobile-button">
+    </span>
+  </a>
+{% if collection.all_types.size > 0 %}
+    <ul>
+      {% for type in collection.all_types %}
+        {% if collection.current_type == type %}
+          <li class="active-filter">
+            {{ type | link_to_type }}
+          </li>
+          {% include 'collection-data-types' %}
+          {% comment %}We doint want to just show the active one{% endcomment %}
+          <li>
+            <a href="/collections">View collections</a>
+          </li>
+
+        {% else %}
+          <li>
+            {{ type | link_to_type }}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Add a type to your products for this list to build itself. All lists are created in <strong>collection-sidebar.liquid</strong>.</p>
+  {% endif %}
+</div>
   <div id="product-holder">
       <div id="product-inner">
 
@@ -55,28 +85,6 @@
     {% endcomment %}
         <div id="wines" class="grid-uniform">
           <div class="swiper-container" style="{{ type_width }}">
-          <div id="types" class="grid-item large--one-eighth">
-            {% if collection.all_types.size > 0 %}
-                <ul>
-                  {% for type in collection.all_types %}
-                    {% if collection.current_type == type %}
-                    {% unless type_width %}
-                      {% assign type_width = '350px' %}
-                    {% endunless %}
-                      <li class="active-filter">
-                        {{ type }}
-                      </li>
-                    {% else %}
-                      <li>
-                        {{ type | link_to_type }}
-                      </li>
-                    {% endif %}
-                  {% endfor %}
-                </ul>
-              {% else %}
-                <p>Add a type to your products for this list to build itself. All lists are created in <strong>collection-sidebar.liquid</strong>.</p>
-              {% endif %}
-          </div>
             <div class="swiper-wrapper">
 
           {% comment %}

@@ -14,11 +14,13 @@
 
     <h1>Shopping Cart</h1>
 
-    {% comment %}
-      Loop through products in the cart
-    {% endcomment %}
+    <div class="mobile-cart">
+
+    <h3>You have {{ cart.item_count }} {{ cart.item_count | pluralize: 'Item', 'Items' }} at ({{ cart.total_price | money }})</h3>
+    <h4><a id="checkout" href="/cart">Cart</a></h4>
+
     {% for item in cart.items %}
-    <div class="cart-row" data-id="{{ item.id }}">
+    <div class="mobile-cart-row" data-id="{{ item.id }}">
       <div class="grid">
 
         {% comment %}
@@ -26,7 +28,7 @@
           and our quantity, price and remove buttons together
         {% endcomment %}
 
-        <div class="grid-item large--one-half">
+        <div class="grid-item large--one-whole">
           <div class="grid">
 
             <div class="grid-item one-third image">
@@ -51,7 +53,7 @@
                 </a>
                 {% unless item.variant.title contains 'Default' %}
                   <br>
-                   <small>{{ item.variant.title }}</small>
+                   <p style=" line-height: 1.2em; font-size: 65%; ">{{ item.variant.title }}</p>
                 {% endunless %}
               </span>
 
@@ -91,7 +93,116 @@
           </div>
         </div>
 
-        <div class="grid-item large--one-half">
+        <div class="grid-item large--one-whole">
+          <div class="grid">
+
+            <div class="grid-item one-third medium-down--one-third ">
+              {% comment %}
+                Added data-id for the ajax cart implementation only.
+              {% endcomment %}
+              <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" data-id="{{ item.id }}">
+            </div>
+
+            <div class="grid-item one-third medium-down--one-third medium-down--text-left">
+              <span class="h4">{{ item.price | money }}</span>
+            </div>
+
+            <div class="grid-item one-third medium-down--one-third">
+              {% comment %}
+                To remove an item from the cart, reload the page with the following parameters.
+                Added data-id for the ajax cart implementation only.
+              {% endcomment %}
+              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" data-id="{{ item.id }}">x</a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {% endfor %}
+
+    </div>
+
+    {% comment %}
+      Loop through products in the cart
+    {% endcomment %}
+    {% for item in cart.items %}
+    <div class="cart-row" data-id="{{ item.id }}">
+      <div class="grid">
+
+        {% comment %}
+          Let's use a sub grids to keep our product image and title together,
+          and our quantity, price and remove buttons together
+        {% endcomment %}
+
+        <div class="grid-item large--one-whole">
+          <div class="grid">
+
+            <div class="grid-item one-third image">
+              <a href="{{ item.url | within: collections.all }}">
+
+                {% comment %}
+                  More image size options at:
+                    - http://docs.shopify.com/themes/filters/product-img-url
+                {% endcomment %}
+                <img src="{{ item | img_url: 'medium' }}"  alt="{{ item.title | escape }}">
+              </a>
+            </div>
+
+            {% comment %}
+              If you want the product title and any variants in one line, use {{ item.title }}.
+              Below they've been separated for styling purposes.
+            {% endcomment %}
+            <div class="grid-item two-thirds">
+              <span class="h4">
+                <a href="{{ item.url }}">
+                  {{ item.product.title }}
+                </a>
+                {% unless item.variant.title contains 'Default' %}
+                  <br>
+                   <p style=" line-height: 1.2em; font-size: 65%; ">{{ item.variant.title }}</p>
+                {% endunless %}
+              </span>
+
+              {% comment %}
+                Optional, add the vendor
+              {% endcomment %}
+              <p>Vendor: <em>{{ item.vendor }}</em></p>
+
+              {% comment %}
+                Optional, loop through custom product line items if available
+
+                For more info on line item properties, visit:
+                  - http://docs.shopify.com/support/your-store/products/how-do-I-collect-additional-information-on-the-product-page-Like-for-a-monogram-engraving-or-customization
+              {% endcomment %}
+              {% if item.properties.size > 0 %}
+              <p>
+                {% for p in item.properties %}
+                  {% unless p.last == blank %}
+                    {{ p.first }}:
+
+                    {% comment %}
+                      Check if there was an uploaded file associated
+                    {% endcomment %}
+                    {% if p.last contains '/uploads/' %}
+                      <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                    {% else %}
+                      {{ p.last }}
+                    {% endif %}
+
+                    <br>
+                  {% endunless %}
+                {% endfor %}
+              </p>
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+
+        <div class="grid-item large--one-whole">
           <div class="grid">
 
             <div class="grid-item one-third medium-down--one-third ">

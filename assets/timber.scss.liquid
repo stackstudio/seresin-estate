@@ -184,7 +184,7 @@ $headerFontWeight: normal;
 
 // Body Font
 $bodyFontStack: $requiemDisplaySmallCaps;
-$baseFontSize: 14px; // Henseforth known as 1em
+$baseFontSize: 12px; // Henseforth known as 1em
 
 // Icons
 @font-face {
@@ -965,6 +965,7 @@ select {
   font-size: $baseFontSize;
   line-height: 1.6;
   font-family: $bodyFontStack;
+  text-transform: uppercase;
   color: $colorTextBody;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -2128,7 +2129,7 @@ label.error {
 .mobile-nav{
   clear: both;
   width: 100%;
-  background: #231f20;
+  background: transparent;
   height: 0px;
   overflow: hidden;
 }
@@ -2504,15 +2505,19 @@ label.error {
     color: #58595B;
     padding: 0 100px;
 
-    & > .italic{
-
+    & > span.italic{
+      font-style: italic;
+      font-family: times;
+      text-transform: lowercase;
+      font-size: 1.1em;
+      font-weight: lighter;
     }
   }
   & > .inner-stretch p{
     color: #58595B;
   }
   & > .inner-stretch .style-line{
-    display: none;
+    background: url({{ "store-line-small.png" || asset_url }}) no-repeat bottom;
   }
 }
 #the-people .inner{
@@ -2661,10 +2666,28 @@ height: 100%;
 }
 
 #types{
-  position: relative;
+  position: absolute;
+  padding: 22px;
+  width: 308px;
+  left: -307px;
+  top: 0px;
+  background: $colorHeadFoot;
+  height: 100%;
+}
+#types #product-filter{
+  position: absolute;
+  right: -63px;
   padding: 10px;
-  float: none;
-  width: 100%;
+  background: black;
+  top: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: $brandGold;
+}
+#types #product-filter span{
+  width: 75%;
+  display: block;
+  margin: 0 auto;
 }
 #types ul{
   padding: 0;
@@ -2673,11 +2696,13 @@ height: 100%;
 }
 #types ul li{
   display: inline-block;
-  margin: 0 10px;
+  width: 100%;
+  margin: 10px 0;
 }
 #types ul li a{
   font-size: $collectionHead;
   text-decoration: none;
+  color: $brandGold;
 }
 
 
@@ -2924,11 +2949,20 @@ height: 100%;
 /*============================================================================
   #Cart Page
 ==============================================================================*/
+
+.mobile-cart{
+  display: none;
+}
+.ajaxifyCart--content h1{
+  margin: 0;
+  padding: 0;
+}
+
 .cart-row {
   margin-top: $gutter;
   padding-top: $gutter;
   /*border-top: 1px solid $colorBorder;*/
-  width: 33%;
+  width: 15%;
   display: inline-block;
   vertical-align: baseline;
 
@@ -2952,12 +2986,11 @@ height: 100%;
   }
 
   a {
-    color: #ffffff;
+    color: $brandGold;
     text-decoration: none;
 
     &:hover {
-      color: #ffffff;
-      background: $brandGold;
+      color: darken($brandGold, 10%);
     }
   }
 }
@@ -3903,6 +3936,95 @@ Media Queries
 
   .big-stretch .inner>.inner-stretch {
     padding: 0 0%;
+    background: rgba(0,0,0,0.2);
+  }
+  .big-stretch .inner>.inner-stretch h1{
+    padding: 10px 30px;
+    font-size: 26px;
+  }
+  .big-stretch .inner>.inner-stretch p{
+    padding: 0 20px;
+    font-size: 12px;
+  }
+  .big-stretch .inner>.inner-stretch hr.style-line{
+    display: none;
+  }
+  #our-biodynamics .inner>.inner-stretch .box,
+  #the-people .inner>.inner-stretch .box,
+  #our-land .inner>.inner-stretch .box {
+    float: none;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+  }
+
+  #the-people .inner>.inner-stretch h1,
+  #the-people .inner>.inner-stretch p,
+  #our-land .inner>.inner-stretch h1,
+  #our-land .inner>.inner-stretch p{
+    color: #fff !important;
+  }
+
+  .rsMinW .rsArrowRight {
+    right: 4%;
+    bottom: 3%;
+  }
+  .rsMinW .rsArrowLeft {
+    right: 4%;
+    top: 3%;
+  }
+
+  /* generic pages */
+
+  #life-is-light{
+    background-position: 50% 61%;
+    background-repeat: no-repeat;
+    background-size: 203%;
+  }
+
+  /* store page */
+
+  #types{
+    top: 23%;
+    z-index: 777777;
+    width: 286px;
+  }
+  #types #product-filter{
+    top: 37%;
+  }
+
+  .store-large .inner-wrap {
+    padding: 10px 12% 84px 12%;
+  }
+
+  #top-wines:first-child{
+    background: none;
+  }
+  .store-large .inner-wrap>#top-wines h1,
+  .store-large .inner-wrap>#top-wines .h1 {
+    margin: 5px 10px;
+    font-size: 2.5em;
+  }
+  .store-large .inner-wrap>h1:nth-child(3), .store-large .inner-wrap>.h1:nth-child(3) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  .store-large .inner-wrap>h1:nth-child(2), .store-large .inner-wrap>.h1:nth-child(2) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide {
+    width: 215px;
+  }
+
+  /* cart items */
+
+  .cart-row{
+    display: none;
+  }
+  .mobile-cart{
+  display: block;
+    padding: 40px;
   }
 
 
