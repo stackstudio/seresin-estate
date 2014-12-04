@@ -1,23 +1,27 @@
+{% if collection.all_types.size > 0 %}
 <div id="data-types">
+{% for type in collection.all_types %}
 {% if type == 'Chardonnay' %}
-  <div data-{{ type | downcase }}=""></div>
-  {% elsif type == 'Gewurztraminer' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.chardonnay_description }}"></div>
+  {% elsif type == 'Gewürztraminer' %}
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.gewurztraminer_description }}"></div>
   {% elsif type == 'Pinot Gris' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.pinot_gris_description }}"></div>
   {% elsif type == 'Reisling' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.reisling_description }}"></div>
   {% elsif type == 'Sauvignon Blanc' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.sauvignon_blanc_description }}"></div>
   {% elsif type == 'Viognier' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.voignier_description }}"></div>
   {% elsif type == 'White Blend' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.white_blend_description }}"></div>
   {% elsif type == 'Pinot Noir' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.pinot_noir_description }}"></div>
   {% elsif type == 'Olive Oil' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.olive_oil_description }}"></div>
   {% elsif type == 'Preserves' %}
-  <div data-{{ type | downcase }}=""></div>
+  <div class="data-wine" data-{{ type | downcase | replace: ' ', '-' }}="{{ settings.preserves_description }}"></div>
 {% endif %}
+{% endfor %}
 </div>
+{% endif %}

@@ -35,6 +35,8 @@ timber.init = function () {
   timber.mobileNav();
   timber.video();
   timber.productTypes();
+  timber.productSingleLoad();
+  timber.getUrls();
 };
 
 timber.preloadImages = function() {
@@ -223,8 +225,9 @@ timber.largeImageResize = function () {
 
   var $window = $(window);
   var w = $window.width();
+  var productsH = $('#the-products').outerHeight();
 
-  if (w <= 580) {
+  if (w <= 580 && w <= 700) {
     var windowsize = $window.height();
     var footerHeight = $('footer').outerHeight();
     var top = $('.site-header').outerHeight();
@@ -232,8 +235,10 @@ timber.largeImageResize = function () {
     $('.image-bigger').parent().css('height',windowsize -footerHeight);
     $('.article-container-land').css('height',windowsize -footerHeight -remainHeight);
     $('body').addClass('mobile-active');
-    $('#wines .swiper-container').css('width',$window.width())
+    $('#wines .swiper-container').css('width',$window.width());
+    $('#types').css('height',productsH );
     {% comment %}$('.main-content').css('height',windowsize -footerHeight);{% endcomment %}
+    $('#cart-large').addClass('wrapper').css('marginTop',top);
   } else {
 
     function checkWidth() {
@@ -241,15 +246,17 @@ timber.largeImageResize = function () {
         var footerHeight = $('footer').outerHeight();
         var top = $('.site-header').outerHeight();
         var remainHeight = parseInt('22');
-        $('.image-bigger').css('height',windowsize -footerHeight);
+        $('.image-bigger, .image-normal').css('height',windowsize -footerHeight);
         $('.store-large').css('height',windowsize -footerHeight);
         $('.article-container-land').css('height',windowsize -footerHeight -remainHeight);
         $('#types').css('height',windowsize -footerHeight -top);
         $('#product-main').css('height',windowsize -footerHeight -top);
         $('#the-products').css('height',windowsize -footerHeight -top);
         $('#product-actual').css('height',windowsize -footerHeight -top);
-        $('#the-products,#types, #product-actual').css('marginTop',top);
+        $('#the-products,#types, #product-actual, #full-screen-video').css('marginTop',top);
         $('#empty-cart').css('height',windowsize -footerHeight);
+        $('#full-screen-video').css('width',$window.width());
+        $('#full-screen-video').css('height',windowsize -footerHeight -top);
     }
 
     // Execute on load
@@ -298,12 +305,12 @@ timber.Geo = function() {
         }
       }
     });
-  }  {% endcomment %}
+  } {% endcomment %} 
 };
 
 timber.getPages = function() {
 
-  if ($('body#our-story').length){
+  if ($('body#our-story').length) {
 
     $.each( $("#data-urls li") , function () {
 
@@ -319,6 +326,8 @@ timber.getPages = function() {
         loop: false,
         loopRewind: false,
         numImagesToPreload: 6,
+        usePreloader: true,
+        slidesSpacing: 0,
         slidesOrientation: 'vertical',
         keyboardNavEnabled: true,
         addActiveClass: true,
@@ -379,6 +388,77 @@ timber.getPages = function() {
     });
 
   }
+
+    if ($('body#dining').length) {
+      $.each( $("#data-urls-dining li") , function () {
+
+        var dataUrlD = $(this).attr('data-url');
+        var jsonObjD = [];
+
+        var sliderDining = $('.article-container-dining').royalSlider({
+          arrowsNav: true,
+          arrowsNavAutoHide: false,
+          fadeinLoadedSlide: true,
+          controlNavigation: 'none',
+          imageAlignCenter:true,
+          loop: false,
+          loopRewind: false,
+          numImagesToPreload: 6,
+          usePreloader: true,
+          slidesSpacing: 0,
+          slidesOrientation: 'vertical',
+          keyboardNavEnabled: true,
+          addActiveClass: true,
+          imageScaleMode: 'fill',
+          arrowsNavAutoHide: false,
+          autoScaleSlider: false, 
+          autoScaleSliderWidth: 1960,     
+          autoScaleSliderHeight: 800,
+          video: {
+            autoHideArrows:true,
+            autoHideControlNav:true
+          },  
+        }).data('royalSlider');
+
+        sliderDining.ev.on('rsAfterSlideChange', function(e,type) {
+            var currentSlide = sliderDining.currSlide;
+            if( sliderDining.currSlide ) {
+              var $head = sliderDining.currSlide.holder.find('h1');
+              var $body = sliderDining.currSlide.holder.find('p');
+              var $line = sliderDining.currSlide.holder.find('.style-line');
+              {% comment %}$($head).addClass('animate fadeIn delay-1');
+              $($line).addClass('animate fadeIn delay-1');
+              $($body).addClass('animate fadeIn delay-2');{% endcomment %}
+
+            } else {
+              var $head2 = sliderDining.holder.find('h1');
+              var $body2 = sliderDining.holder.find('p');
+              $($head2).removeClass('animate fadeIn delay-1');
+              $($body2).removeClass('animate fadeIn delay-2');
+            }
+            {% comment %}sliderStory.currSlide.holder.transition({
+              opacity: 1,
+              duration: 500,
+              easing: 'in',
+              delay: 500
+            });{% endcomment %}
+        });
+
+            
+        $.get( dataUrlD, function( dataD ) {
+
+          $.each(dataD, function(d, itemD) {
+            var bodyWine = data[d].body_html,titleWine = data[d].title,idWine = data[d].handle;
+            sliderDining.appendSlide('<section id="'+ idWine +'" href="#'+ idWine +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ titleWine +'</h1><hr class="style-line"><p class="">'+ bodyWine +'</p></div></div></figure></section>');
+            timber.largeImageResize();
+          });
+        }, 'json').done(function() {
+
+        });
+
+    });
+  }
+
   
 };
 
@@ -401,6 +481,7 @@ timber.carouselScroll = function(){
         updateOnImagesReady: true,
         centeredSlides: true,
         slidesPerView: 'auto',
+    mousewheelControl: true,
         initialSlide: slideIndex,
         onInit : function (WineSwiper){
           var activeSlide = WineSwiper.activeSlide();
@@ -419,6 +500,11 @@ timber.carouselScroll = function(){
         },
         onSlideNext: function(WineSwiper){
           infoEffectOut('.swiper-slide .bag-info');
+        },
+        onSwiperCreated: function(WineSwiper){
+          infoEffectOut('#product-loader');
+          $('#product-loader').delay(2000).remove();
+          infoEffectIn('#collection-slider');
         }
       });
 
@@ -441,7 +527,8 @@ timber.carouselScroll = function(){
       $('.arrow-right').on('click', function(e){
         e.preventDefault();
         WineSwiper.swipeNext();
-      });  
+      });
+      
   }
 
   {% comment %}Doing the filter function here{% endcomment %}
@@ -613,20 +700,92 @@ timber.mobileNav = function() {
 
 timber.productTypes = function() {
 
-var productUrl = '/products.json';
+  var productUrl = '/products.json';
 
-$.get( productUrl, function( data ) {
+  $.get( productUrl, function( data ) {
 
-  $.each(data, function(i, item) {
-    console.log(data);
+    $.each(data, function(i, item) {
+      console.log(data);
+    });
+  }, 'json').done(function() {
+
+    console.log();
+
   });
-}, 'json').done(function() {
 
-  console.log();
-
-});
+  $('#full-screen-video').fullScreenVideo();
   
-};  
+}; 
+
+function infoEffectOut(element){
+  $(element).transition({
+    opacity: 0
+  });
+}
+
+function infoEffectIn(element){
+  $(element).transition({
+    opacity: 1
+  });
+}
+
+timber.productSingleLoad = function() {
+
+{% comment %}'img#productPhotoImg'{% endcomment %}
+  if ($('#product-main').length){
+
+    $(window).load(function() {
+
+      infoEffectOut('#product-loader');
+      $('#product-loader').delay(2000).remove();
+
+      infoEffectIn('#product-main');
+
+    });
+
+  }
+  
+};
+
+timber.getUrls = function(){
+
+if ( $('#collection-slider').length ) {
+
+  function getParameterByName(name) {
+
+      var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+      return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+
+  }
+
+  var qvalue = getParameterByName('q');
+  var url = window.location.search;
+
+  if (window.location.href.indexOf(qvalue)) {
+    var string = qvalue;
+    var stringed = string.toLowerCase();
+    var stringDash = stringed.replace(" ", "-");
+
+    var dataWine = $('.data-wine').attr('data-'+ stringDash);
+    $('#collection-slider').css({
+      width: '50%',
+      margin: 20,
+      float: 'left',
+      display: 'block'
+    });
+    
+    $('#wines .swiper-container').css({
+      width: '100%',
+      display: 'block'
+    });
+
+    $('#tasting-notes').css('display','block').html('<h1>'+ string +'</h1><p>' + dataWine +'</p>')
+
+  }
+
+}
+  
+};
 
 
 // Initialize Timber's JS on docready

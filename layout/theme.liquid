@@ -8,19 +8,7 @@
 
 <!-- Who designed and built this? ================================================== -->
       <!-- Theme design: Williams Murray Hamm -->
-      <!--
- $$$$$$..  .$$$$$$    $$$$$$~   $$$$$$$$$.  ..$$$$$$$$$    $$$$$$      I$$$$$I  
-.,$$$$$$   ?$$$$$$..  $$$$$$.   $$$$$$$$$.   $$$$$$$$$$    $$$$$$      I$$$$$I  
-  $$$$$$.  $$$$$$$$ ..$$$$$$.   $$$$$$$$$=  .$$$$$$$$$$    $$$$$$      I$$$$$I  
-  ~$$$$$. .$$$$$$$$..+$$$Z$     $$$$$$$$$$  :$$$$$$$$$$    $$$$$$     .I$$$$$I  
- . $$$$$$.I$$$Z$$$$..$$$$$$     $$$$$I$$$$..$$$$$$$$$$$    $$$$$$$$$$$$$$$$$$I  
-   $$$$$$.Z$$$?$$$$,.$$$$$.     $$$$$I$$$$$.$$$$~$$$$$$    $$$$$$$$$$$$$$$$$$I  
-   .$$$$$.$$$$.$$$$$+$$$$$      $$$$$I$$$$$.$$$$.$$$$$$    $$$$$$$$$$$$$$$$$$I  
-   .$$$$$7$$$$. $$$$$$$$$.      $$$$$I $$$Z$$$$Z.$$$$$$    $$$$$$::::::7$$$$$I  
-    .$$$$$$$$$ .$$$$$$$$$       $$$$$I.$$$$$$$$, $$$$$$    $$$$$$      I$$$$$I  
-     $$$$$$$$...$$$$$$$$$       $$$$$I  $$$$$$$  $$$$$$    $$$$$$      I$$$$$I  
-     :$$$$$$$   $$$$$$$$.       $$$$$I  $$$$$$=. $$$$$$    $$$$$$      I$$$$$I  
-      $$$$$$$.   $$$$$Z$.       $$$$$I  .$$$$$.  $$$$$$    $$$$$$      I$$$$$I  -->
+
       <!-- Theme development/build: Stack Studio Ltd -->
 
       <!-- Theme developers: http://www.stackstudio.co.uk -->
@@ -56,6 +44,7 @@
 
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
+  <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7096072/800426/css/fonts.css" />
 
   {% if settings.ajax_cart_enable %}
   <!-- Ajaxify Cart Plugin ================================================== -->
@@ -87,12 +76,28 @@
     <li data-url="{{ link.url }}"></li>
   {% endfor %}
 </ul>
+
+<ul id="data-urls-dining" style="display: none;">
+  {% for link in linklists.dining-menu.links %}
+    <li data-url="{{ link.url }}"></li>
+  {% endfor %}
+</ul>
+
+{% if template == 'index' %}
+<style type="text/css">
+  .site-nav>li:first-child{
+    display: none;
+  }
+</style>
+{% endif %}
+
+{% include 'collection-data-types' %}
 </head>
 
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body id="{{ page_title | handle }} {{ collection | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
   <header class="site-header" role="banner">
 
       <div class="grid--full">
@@ -125,9 +130,7 @@
             <div class="grid-item cart-checkout large--one-third large--text-left">
 
               {% if template == 'index' %}
-                <a href="/pages/our-store" id="checkout">
-                  Shop
-                </a>
+                
               {% else %}
                 <a href="/cart" id="cartToggle">
                   Cart (<span id="cartCount">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'item', 'items' }} <span id="cartCost">{{ cart.total_price | money }}</span>)
@@ -202,9 +205,11 @@
   {{ 'handlebars.min.js' | asset_url | script_tag }}
   {% include 'ajax-cart-template' %}
   {{ 'ajaxify.js' | asset_url | script_tag }}
+  {% comment %} Lets build what we need here for ux purposes {% endcomment %}
   {{ 'transitions.js' | asset_url | script_tag }}
   {{ 'royalslider.min.js' | asset_url | script_tag }}
   {{ 'swiper-slider.js' | asset_url | script_tag }}
+  {{ 'full-screen-video.js' | asset_url | script_tag }}
   <script>
   jQuery(function($) {
     ajaxifyShopify.init({

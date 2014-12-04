@@ -6,8 +6,22 @@
     - responsive full bleed
 {% endcomment %}
 
+<div class="image-bigger non-mobile-bg">
+  <div class="wrap">
+      <div class="inner-wrap">
+        <h1 class="animate fadeIn"><img src="{{ 'intro-detail-h1.png' | asset_url }}" alt="seresin top image"></h1>
+        <h3 class="animate fadeIn"><img src="{{ 'intro-detail-h3.png' | asset_url }}" alt="seresin bottom text"></h3>
+      </div>
+    </div>
+  </div>
+  <video class="non-mobile-bg" autoplay id="full-screen-video">
+    <source src="{{ 'LAND_MOCK.mp4' | asset_url }}" type="video/mp4">
+    <source src="https://cdn.shopify.com/s/files/1/0671/4839/files/SERESIN_BW.mp4?7441" type="video/ogv">
+      <source src="https://cdn.shopify.com/s/files/1/0671/4839/files/SERESIN_BW.mp4?7441" type="video/webm">
+  </video>
+
 {% if settings.show-slide-1 %}
-<div class="image-bigger" style="background-image: url({{ 'slide-image-1.jpg' | asset_url }});">
+<div class="image-bigger mobile-bg" style="background-image: url({{ 'slide-image-1.jpg' | asset_url }});">
 
   <div class="wrap">
     <div class="inner-wrap">
@@ -19,12 +33,6 @@
 </div>
 {% endif %}
 
-{% comment %}<video class="image-bigger" autoplay poster="{% if settings.show-slide-1 %}{{ 'slide-image-1.jpg' | asset_url }}{% endif %}" id="fullscreen-video">
-  <source src="{{ 'SKY_MOCK.mp4.mp4' | asset_url }}" type="video/mp4">
-  <source src="{{ 'intro-detail-h1.png' | asset_url }}" type="video/ogv">
-    <source src="{{ 'intro-detail-h1.png' | asset_url }}" type="video/webm">
-</video>
-{% endcomment %}
 
 {% comment %}
 {% if settings.show-slide-content-1 == false and settings.slide-link-1.size > 0 %}

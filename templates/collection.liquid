@@ -6,6 +6,7 @@
 {% endcomment %}
 
 <div class="grid" id="the-products">
+  <div id="product-loader"><div class="loading"><div class="load fadeFlash"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div></div></div>
 <div id="types" class="grid-item large--one-eighth">
   <a id="product-filter" href="#">Filter <span>
     <img class="closed" src="{{ 'mobile-menu-icon.png' | asset_url }}" alt="menu icon">
@@ -19,12 +20,10 @@
           <li class="active-filter">
             {{ type | link_to_type }}
           </li>
-          {% include 'collection-data-types' %}
-          {% comment %}We doint want to just show the active one{% endcomment %}
-          <li>
+          We doint want to just show the active one
+          {% comment %}<li>
             <a href="/collections">View collections</a>
-          </li>
-
+          </li>{% endcomment %}
         {% else %}
           <li>
             {{ type | link_to_type }}
@@ -166,6 +165,10 @@
 <div class="arrow-right"><a href="#"></a></div>
 
 </div>
+
+{% comment %} This is where the clever shit happens {% endcomment %}
+
+<div id="tasting-notes"></div>
 
     </div>
     </div>

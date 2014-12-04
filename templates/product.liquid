@@ -7,9 +7,11 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
+
 <div id="product-actual">
+  <div id="product-loader"><div class="loading"><div class="load fadeFlash"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div></div></div>
 <div id="product-holder">
-      <div id="product-inner">
+<div id="product-inner">
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -163,9 +165,11 @@
 
 
 </div>
+{% comment %} end #product-inner {% endcomment %}
+</div>
+{% comment %}end #product-holder{% endcomment %}
 </div>
 {% comment %}end #product-actual{% endcomment %}
-</div>
 
 {% comment %}
   To take advantage of a callback on the select dropdown, add option_selection.js
