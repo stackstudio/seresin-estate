@@ -8,28 +8,27 @@
 <div class="grid" id="the-products">
   <div id="product-loader"><div class="loading"><div class="load fadeFlash"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div></div></div>
 <div id="types" class="grid-item large--one-eighth">
-  <a id="product-filter" href="#">Filter <span>
+  {% capture collection_name %}{{ collection.title | escape }}{% endcapture %}
+  <a id="product-filter" href="#">Product <br>type<span>
     <img class="closed" src="{{ 'mobile-menu-icon.png' | asset_url }}" alt="menu icon">
     <img class="open" style="display: none;" src="{{ 'mobile-menu-icon-active.png' | asset_url }}" alt="mobile menu icon" itemprop="mobile-button">
     </span>
   </a>
 {% if collection.all_types.size > 0 %}
-    <ul>
+    <ul class="the-types">
       {% for type in collection.all_types %}
         {% if collection.current_type == type %}
           <li class="active-filter">
-            {{ type | link_to_type }}
+            <span> {{ type | link_to_type }}</span>
           </li>
-          We doint want to just show the active one
-          {% comment %}<li>
-            <a href="/collections">View collections</a>
-          </li>{% endcomment %}
-        {% else %}
+          {% else %}
           <li>
-            {{ type | link_to_type }}
+            <span> {{ type | link_to_type }}</span>
           </li>
         {% endif %}
+        {% include 'collection-types-all' %}
       {% endfor %}
+      
     </ul>
   {% else %}
     <p>Add a type to your products for this list to build itself. All lists are created in <strong>collection-sidebar.liquid</strong>.</p>
@@ -46,37 +45,8 @@
 
 {% comment %}{% include 'breadcrumb' %}{% endcomment %}
 
-{% comment %}  <div class="grid-item large--one-whole">
-    {% include 'collection-sidebar' %}
-  </div>{% endcomment %}
 
   <div class="grid-item large--one-whole">
-
-    {% comment %}
-      Different markup if a collection description exists
-    {% endcomment %}
-    {% comment %}{% if collection.description != blank %}
-      <header class="section-header">
-        <h1 class="section-header--title">{{ collection.title }}</h1>
-        <div class="rte rte--header">
-          {{ collection.description }}
-        </div>
-      </header>
-      <div class="section-header">
-        <div class="section-header--right">
-          {% include 'collection-sorting' %}
-          {% include 'collection-views' %}
-        </div>
-      </div>
-    {% else %}
-    <header class="section-header">
-      <h1 class="section-header--title section-header--left">{{ collection.title }}</h1>
-      <div class="section-header--right">
-        {% include 'collection-sorting' %}
-        {% include 'collection-views' %}
-      </div>
-    </header>
-    {% endif %}{% endcomment %}
 
     {% comment %}
       Use class grid-uniform to have evenly sized columns clear

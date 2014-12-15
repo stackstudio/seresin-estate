@@ -71,18 +71,6 @@
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}
 
-<ul id="data-urls" style="display: none;">
-  {% for link in linklists.dynamic-menu.links %}
-    <li data-url="{{ link.url }}"></li>
-  {% endfor %}
-</ul>
-
-<ul id="data-urls-dining" style="display: none;">
-  {% for link in linklists.dining-menu.links %}
-    <li data-url="{{ link.url }}"></li>
-  {% endfor %}
-</ul>
-
 {% if template == 'index' %}
 <style type="text/css">
   .site-nav>li:first-child{
@@ -90,14 +78,22 @@
   }
 </style>
 {% endif %}
-
 {% include 'collection-data-types' %}
+<ul id="data-urls-collections" style="display: none;">
+{% for collection in collections %}
+  {% unless collection.handle == 'frontpage' %}
+    {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+    {% capture collection_types %}{{ collection.all_types | split: '-' }}{% endcapture %}
+    <li data-url="{{ collection.url }}" data-title="{{ collection_title }}" data-types="{{ collection_types }}"></li>
+  {% endunless %}
+{% endfor %}
+</ul>
 </head>
 
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }} {{ collection | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
   <header class="site-header" role="banner">
 
       <div class="grid--full">
@@ -207,9 +203,10 @@
   {{ 'ajaxify.js' | asset_url | script_tag }}
   {% comment %} Lets build what we need here for ux purposes {% endcomment %}
   {{ 'transitions.js' | asset_url | script_tag }}
+  {{ 'full-screen-video.js' | asset_url | script_tag }}
   {{ 'royalslider.min.js' | asset_url | script_tag }}
   {{ 'swiper-slider.js' | asset_url | script_tag }}
-  {{ 'full-screen-video.js' | asset_url | script_tag }}
+  {{ 'pages.min.js' | asset_url | script_tag }}
   <script>
   jQuery(function($) {
     ajaxifyShopify.init({

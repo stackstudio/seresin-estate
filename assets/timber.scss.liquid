@@ -2575,6 +2575,7 @@ label.error {
     line-height: 1.3em;
     font-weight: 400;
     text-transform: none;
+    font-style: italic;
   }
   
 }
@@ -2599,7 +2600,7 @@ label.error {
 #product-loader{
   width: 100%;
   height: 100%;
-  background: white;
+  background: #000000;
   @include opacity(1);
   z-index: 5555;
   display: table;
@@ -2616,9 +2617,27 @@ height: 200px;
 margin: 0 auto;
 }
 
-.article-container-land .rsSlide{
-  
+.article-container-land{
+  @include opacity(0);
 }
+.article-container-land .swiper-container{
+  width: 1280px;
+  height: 660px;
+  color: #000;
+}
+.article-container-land .swiper-container .swiper-wrapper{
+  width: 100%;
+  height: 100%;
+}
+.article-container-land .swiper-container .swiper-wrapper .swiper-slide{
+  width: 300px;
+  height: 200px;
+}
+#land-loader{
+  background: #000000;
+  width: 100%;
+}
+
 #life-is-light .inner{
 
   color: #58595B;
@@ -2796,16 +2815,18 @@ height: 100%;
   top: 0px;
   background: $colorHeadFoot;
   height: 100%;
+  z-index: 777777;
 }
 #types #product-filter{
   position: absolute;
-  right: -63px;
+  right: -81px;
   padding: 10px;
   background: black;
   top: 0px;
   text-align: center;
   text-decoration: none;
   color: $brandGold;
+  line-height: 1em;
 }
 #types #product-filter span{
   width: 75%;
@@ -2826,6 +2847,8 @@ height: 100%;
   font-size: $collectionHead;
   text-decoration: none;
   color: $brandGold;
+  text-transform: capitalize;
+font-style: italic;
 }
 
 
@@ -2859,6 +2882,11 @@ height: 100%;
   float: right;
   width: 46%;
   padding: 20px;
+}
+#tasting-notes p{
+  font-style: italic;
+  font-family: $bodySerif;
+  text-transform: none;
 }
 
 #product-main .product-photo-container{
@@ -2974,6 +3002,10 @@ height: 100%;
   background-image: url({{ "biodynamics-bg-default.png" | asset_url }});
   @include bg-image(no-repeat, cover, center);
 }
+#winemaking{
+  background-image: url({{ "winemaking-dining.jpg" | asset_url }});
+  @include bg-image(no-repeat, cover, center -7%);
+}
 #our-land{
   background-image: url({{ "our-land-bg-default.png" | asset_url }});
   @include bg-image(no-repeat, cover, left bottom);
@@ -2982,6 +3014,116 @@ height: 100%;
   background-image: url({{ "people-bg-default.png" | asset_url }});
   @include bg-image(no-repeat, cover, left 44%);
 }
+
+/*======================================
+ # The dining page elements
+========================*/
+
+.article-container-dining{
+  @include opacity(0);
+}
+
+#dining-loader{
+  background: black;
+  width: 100%;
+}
+
+#waterfall-bay-dinner-series {
+  background-image: url({{ "waterfall-bay.jpg" | asset_url }});
+  @include bg-image(no-repeat, cover, center -17%);
+}
+#the-dinner{
+  background-image: url({{ "the-dinner.jpg" | asset_url }});
+  @include bg-image(no-repeat, cover, center top);
+}
+#book-now{
+  background-image: url({{ "book-now.jpg" | asset_url }});
+  @include bg-image(no-repeat, cover, center top);
+}
+#dining #winemaking{
+  background-image: url({{ "winemaking-dining.jpg" | asset_url }});
+  @include bg-image(no-repeat, cover, center -7%);
+}
+
+
+#waterfall-bay-dinner-series {
+
+  & .inner > .inner-stretch p{
+    display: none;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    display: none;
+  }
+ 
+}
+#the-dinner{
+
+  & .inner > .inner-stretch {
+    padding: 0px;
+  }
+
+  & .inner > .inner-stretch .box {
+    float: right;
+    width: 31%;
+    margin-right: 13%;
+  }
+
+  & .inner > .inner-stretch h1{
+    display: none;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    display: none;
+  }
+  
+}
+#book-now{
+
+  & .inner > .inner-stretch h1{
+    display: none;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    display: none;
+  }
+
+  & .inner > .inner-stretch {
+    padding: 0px;
+  }
+
+  & .inner > .inner-stretch .box {
+    float: right;
+    width: 30%;
+    margin-right: 11%;
+  }
+
+  & .inner > .inner-stretch .box .wrap .btn {
+    padding: 15px 17px;
+    font-size: 2em;
+    border: solid 1px #fff;
+
+    &:hover{
+      background: $brandGold;
+    }
+  }
+  
+}
+#winemaking{
+
+  & .inner > .inner-stretch h1{
+    color: #58595B;
+  }
+
+  & .inner > .inner-stretch p{
+    color: #58595B;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    background: url({{ "style-line-dark.png" || asset_url }}) no-repeat center;
+  }
+}
+
 
 /*============================================================================
   #Product Page
@@ -4247,6 +4389,200 @@ Media Queries
     width: 48%;
     padding-left: 20px;
     display: block;
+
+    & > #mobile-button img.open{
+      display: none;
+    }
+    & > #mobile-button img.closed{
+      display: block;
+    }
+  }
+  .header-logo {
+    text-align: right;
+    font-size: em(40px);
+    margin: 0 16px 8px;
+    max-width: 90px;
+    float: right;
+  }
+  #wines .swiper-container {
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
+  }
+  #collection-slider{
+    display: block;
+    padding: 0;
+  }
+  .swiper-container .swiper-wrapper{
+    padding-left: !important;
+    padding-right: !important;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 450px;
+    height: 100%;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide .product{
+    height: 75%;
+    position: relative;
+  }
+  .product-grid-image{
+    height: 86%;
+  }
+  .product-grid-image img {
+    height: 70%;
+  }
+
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .bag-info,
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .product{
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  .big-stretch .inner>.inner-stretch {
+    padding: 0 0%;
+    background: rgba(0,0,0,0.2);
+  }
+  .big-stretch .inner>.inner-stretch h1{
+    padding: 10px 30px;
+    font-size: 26px;
+  }
+  .big-stretch .inner>.inner-stretch p{
+    padding: 0 20px;
+    font-size: 12px;
+  }
+  .big-stretch .inner>.inner-stretch hr.style-line{
+    display: none;
+  }
+  #our-biodynamics .inner>.inner-stretch .box,
+  #the-people .inner>.inner-stretch .box,
+  #our-land .inner>.inner-stretch .box {
+    width: 65%;
+    padding: 20px;
+  }
+
+  #the-people .inner>.inner-stretch h1,
+  #the-people .inner>.inner-stretch p,
+  #our-land .inner>.inner-stretch h1,
+  #our-land .inner>.inner-stretch p{
+    color: #fff !important;
+  }
+
+  .rsMinW .rsArrowRight {
+    right: 4%;
+    bottom: 3%;
+  }
+  .rsMinW .rsArrowLeft {
+    right: 4%;
+    top: 3%;
+  }
+
+  /* generic pages */
+
+  #life-is-light{
+    background-position: 50% 61%;
+    background-repeat: no-repeat;
+    background-size: 203%;
+  }
+
+  /* store page */
+
+  #types{
+    top: 29%;
+    z-index: 777777;
+    width: 50%;
+  }
+  #types #product-filter{
+    top: 37%;
+  }
+
+  .store-large .inner-wrap {
+    padding: 10px 12% 84px 12%;
+  }
+
+  
+  .store-large .inner-wrap>#top-wines h1,
+  .store-large .inner-wrap>#top-wines .h1 {
+    margin: 5px 10px;
+    font-size: 2.4em;
+  }
+  .store-large .inner-wrap>h1:nth-child(3), .store-large .inner-wrap>.h1:nth-child(3) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  .store-large .inner-wrap>h1:nth-child(2), .store-large .inner-wrap>.h1:nth-child(2) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide {
+    width: 215px;
+  }
+
+  /* cart items */
+
+  .cart-row{
+    display: none;
+  }
+  .mobile-cart{
+    display: block;
+    padding: 5px;
+  }
+
+
+}
+
+
+
+
+@media screen and (max-width: $medium) {
+
+.mobile-bg{
+  display: block;
+}
+.non-mobile-bg{
+  display: none;
+}
+
+  .site-header, .site-footer{
+    padding: $gutter/3 0;
+    z-index: 77777;
+  }
+  .site-header .grid--full > .nav-bar .main-nav{
+    display: none;
+  }
+  .site-header .grid--full > .nav-bar{
+    width: 50%;
+  }
+  .cart-checkout #checkout{
+    display: none;
+  }
+  .main-content{
+    margin-top: 0px;
+    padding-bottom: 0px;
+  }
+  .inner-wrap h1{
+    margin-top: -140px;
+    padding: 10px;
+  }
+  .inner-wrap h1 img,
+  .inner-wrap h3 img{
+    width: 98%;
+    height: auto;
+  }
+
+  .mobile-logo{
+    float: right;
+    width: 48%;
+  }
+  .mobile-nav{
+    display: block;
+  }
+  .mobile-navbar{
+    float: left;
+    width: 48%;
+    padding-left: 20px;
+    display: block;
+    padding-top: 5%;
 
     & > #mobile-button img.open{
       display: none;

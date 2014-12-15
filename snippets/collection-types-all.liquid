@@ -1,0 +1,39 @@
+{% comment %}
+      Different markup if a collection description exists
+    {% endcomment %}
+    {% comment %}{% if collection.description != blank %}
+      <header class="section-header">
+        <h1 class="section-header--title">{{ collection.title }}</h1>
+        <div class="rte rte--header">
+          {{ collection.description }}
+        </div>
+      </header>
+      <div class="section-header">
+        <div class="section-header--right">
+          {% include 'collection-sorting' %}
+          {% include 'collection-views' %}
+        </div>
+      </div>
+    {% else %}
+    <header class="section-header">
+      <h1 class="section-header--title section-header--left">{{ collection.title }}</h1>
+      <div class="section-header--right">
+        {% include 'collection-sorting' %}
+        {% include 'collection-views' %}
+      </div>
+    </header>
+    {% endif %}{% endcomment %}
+{% for product_type in collection.all_types %}
+
+  {% for product in collection.products %}
+    {% if product.type == product_type | handleize %}     
+      <li>
+          {{ product.type | link_to_type }}
+        </li>
+    {% endif %}
+  {% endfor %}
+
+{% endfor %}
+<div class="grid-item large--one-whole">
+{% include 'collection-sidebar' %}
+</div>
