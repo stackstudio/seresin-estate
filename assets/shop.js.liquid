@@ -715,7 +715,7 @@ timber.productSingleLoad = function() {
 
 timber.getUrls = function(){
 
-  {% comment %}if(window.location.href.indexOf("collections") > -1) {{% endcomment %}
+  if(window.location.href.indexOf("collections") > -1) {
 
     function getParameterByName(name) {
 
@@ -728,7 +728,7 @@ timber.getUrls = function(){
       var qvalue = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
       var url = window.location.search;
       
-      if ( qvalue == 'white-wine' && qvalue == 'red-wine' && qvalue == 'olive-oil' && qvalue == 'preserves' ) {
+      if ( window.location.href.lastIndexOf('/white-wine')  && window.location.href.lastIndexOf('/red-wine') && window.location.href.lastIndexOf('/olive-oil') && window.location.href.lastIndexOf('/preserves') ) {
         // do nowt
       } else {
 
@@ -757,7 +757,7 @@ timber.getUrls = function(){
     }
     {% comment %} ending else here for the url tester {% endcomment %}
 
-  {% comment %}}{% endcomment %}
+  }
   
 };
 
