@@ -374,7 +374,7 @@ timber.getPages = function() {
 
 timber.getDining = function() {
 
-var sliderDining = $('.article-container-dining').royalSlider({
+    var sliderDining = $('.article-container-dining').royalSlider({
           arrowsNav: true,
           arrowsNavAutoHide: false,
           fadeinLoadedSlide: true,
@@ -400,8 +400,6 @@ var sliderDining = $('.article-container-dining').royalSlider({
           },  
         }).data('royalSlider');
 
-  if ($('article#dining').length) {
-
     var dining = $("#data-urls-dining li").map(function() { 
         return $.get($(this).data('url')); 
     });
@@ -409,7 +407,7 @@ var sliderDining = $('.article-container-dining').royalSlider({
     $.when.apply(null, dining).then(function() {
         var diningresponses = [].slice.call(arguments);
         $.each(diningresponses, function(i, dataD) {
-        console.log(dataD);
+          console.log(dataD);
           var bodyWine = dataD[0].page.body_html,titleWine = dataD[0].page.title,idWine = dataD[0].page.handle;
           sliderDining.appendSlide('<section id="'+ idWine +'" href="#'+ idWine +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ titleWine +'</h1><hr class="style-line"><p class="">'+ bodyWine +'</p></div></div></figure></section>');
             timber.largeImageResize();
@@ -423,8 +421,6 @@ var sliderDining = $('.article-container-dining').royalSlider({
       infoEffectIn('.article-container-dining');
 
     });
-
-  }
 
   
 };
