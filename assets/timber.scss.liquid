@@ -4554,12 +4554,13 @@ Media Queries
     padding: $gutter/3 0;
     z-index: 77777;
   }
-  .site-header .grid--full > .nav-bar .main-nav{
-    display: none;
-  }
   .site-header .grid--full > .nav-bar{
-    width: 50%;
+    width: 85%;
+    & > .main-nav{
+      padding-top: 40px;
+    }
   }
+
   .cart-checkout #checkout{
     display: none;
   }
@@ -4574,10 +4575,10 @@ Media Queries
   .mobile-bg{
     display: block;
   }
-
-
-  .inner-wrap h1{
-    margin-top: -140px;
+  .mobile-logo{
+    width: 150px;
+  }
+  .inner-wrap h1{    
     padding: 10px;
   }
   .inner-wrap h1 img,
@@ -4585,27 +4586,8 @@ Media Queries
     width: 98%;
     height: auto;
   }
-
-  .mobile-logo{
-    float: right;
-    width: 48%;
-  }
-  .mobile-nav{
-    display: block;
-  }
-  .mobile-navbar{
-    float: left;
-    width: 48%;
-    padding-left: 20px;
-    display: block;
-    padding-top: 5%;
-
-    & > #mobile-button img.open{
-      display: none;
-    }
-    & > #mobile-button img.closed{
-      display: block;
-    }
+  .social-main{
+    width: 15%;
   }
   .header-logo {
     text-align: right;
