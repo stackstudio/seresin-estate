@@ -1,0 +1,128 @@
+{% comment %}
+
+  For more information on collection tags:
+    - http://docs.shopify.com/themes/liquid-variables/collection
+
+{% endcomment %}
+
+<div class="grid" id="the-products">
+  <div id="product-loader"><div class="loading"><div class="load fadeFlash"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div></div></div>
+<div id="types" class="grid-item large--one-eighth">
+  {% capture collection_name %}{{ collection.title | escape }}{% endcapture %}
+  <a id="product-filter" href="#">Product <br>type<span>
+    <img class="closed" src="{{ 'mobile-menu-icon.png' | asset_url }}" alt="menu icon">
+    <img class="open" style="display: none;" src="{{ 'mobile-menu-icon-active.png' | asset_url }}" alt="mobile menu icon" itemprop="mobile-button">
+    </span>
+  </a>
+  {% include 'collection-types-all' %}
+</div>
+  <div id="product-holder">
+      <div id="product-inner">
+
+<div class="wrapper" id="collection-slider">
+
+  <div class="arrow-left"><a href="#"></a></div>
+
+{% paginate collection.products by 12 %}
+
+{% comment %}{% include 'breadcrumb' %}{% endcomment %}
+
+
+  <div class="grid-item large--one-whole">
+
+    {% comment %}
+      Use class grid-uniform to have evenly sized columns clear
+      each other properly at each breakpoint.
+    {% endcomment %}
+        <div id="wines" class="grid-uniform">
+          <div class="swiper-container" style="{{ type_width }}">
+            <div class="swiper-wrapper">
+
+          {% comment %}
+            Loop through our products in the current collection.
+            See the snippet 'product-grid-item' for the layout.
+          {% endcomment %}
+          {% unless grid_item_width %}
+            {% assign grid_item_width = 'large--two-twelfths medium--one-half' %}
+          {% endunless %}
+          {% for product in collection.products %}
+          <div id="{{ product.title | downcase | replace: ' ', '-' }}" class="grid-item swiper-slide">
+            <form action="/cart/add" method="post" enctype="multipart/form-data" class="add-collection-item">
+
+              {% comment %}
+                This the wrap element for the info for the products in collection
+                ----> .bag-info
+              {% endcomment %}
+              <figure class="bag-info">
+                <select name="id" id="productSelect" class="product-variants" style="display: none;">
+                  {% for variant in product.variants %}
+                    {% if variant.available %}
+
+                      {% comment %}
+                        Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                      {% endcomment %}
+                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                    {% else %}
+                      <option disabled="disabled">
+                        {{ variant.title }} - Sold out
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <span class="h3 product-price {% if product.compare_at_price > product.price %} on-sale{% endif %}" itemprop="price">
+                  {{ product.price | money }}
+                </span>
+                {% comment %}<h4><a href="{{ product.url | within: collection }}" class="product-grid-image">Tasting Notes</a></h4>{% endcomment %}
+                {% if product.compare_at_price > product.price %}
+                  <p class="compare-price" style="display: none;" class="h5">
+                    Compare at: {{ product.compare_at_price_max | money }}
+                  </p>
+                {% endif %}
+                <label for="quantity" class="quantity-selector">Qty</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                <button type="submit" name="add" class="btn addToCartC">
+                  <span class="addToCartCText">Add to Cart</span>
+                </button>
+              </figure>
+
+                {% include 'product-grid-item' %}
+
+            </form>
+          </div>
+          {% else %}
+
+            <div class="grid-item">
+              <p>Sorry, there are no products matching your search.</p>
+            </div>
+
+          {% endfor %}
+            </div>
+          </div>
+        </div>
+
+
+{% comment %}    {% if paginate.pages > 1 %}
+      <hr>
+
+      <div class="text-center">
+        {% include 'pagination-custom' %}
+      </div>
+    {% endif %}{% endcomment %}
+
+  </div>
+
+{% endpaginate %}
+
+<div class="arrow-right"><a href="#"></a></div>
+
+</div>
+
+{% comment %} This is where the clever shit happens {% endcomment %}
+
+<div id="tasting-notes"></div>
+
+    </div>
+    </div>
+
+</div>

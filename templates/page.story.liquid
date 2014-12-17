@@ -1,0 +1,29 @@
+<ul id="data-urls" style="display: none;">
+  {% for link in linklists.dynamic-menu.links %}
+    <li data-number="{{ forloop.index }}" data-title="{{ link.title | handle }}" data-url="{{ link.url }}.json"></li>
+  {% endfor %}
+</ul>
+<div class="grid">
+  {% comment %}<div class="grid-item grid--full">{% endcomment %}
+  	<div id="land-loader">
+        <div id="product-loader">
+          <div class="loading"><div class="load fadeFlash"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div></div>
+        </div>
+      </div>
+      	<article id="pages" class="page-holder article-container-land rsMinW">
+
+    	</article>
+       	{% comment %}<article id="pages pagepiling" class="article-container-land rsMinW">
+
+    	</article>
+{% endcomment %}      {% comment %}{{ page.content }}{% endcomment %}
+  {% comment %}</div><div class="swiper-container">
+    			<div class="swiper-wrapper">
+    				<div class="swiper-slide"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div>
+    				<div class="swiper-slide"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div>
+    				<div class="swiper-slide"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div>
+    				<div class="swiper-slide"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div>
+    				<div class="swiper-slide"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}"></div>
+    			</div>
+    		</div>{% endcomment %}
+</div>

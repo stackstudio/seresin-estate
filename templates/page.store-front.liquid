@@ -1,0 +1,36 @@
+{% comment %}
+
+
+{% endcomment %}
+
+  {% if settings.show-slide-2 %}
+  <div class="store-large" id="store-front" style="background-image: url({{ 'slide-image-2.jpg' | asset_url }});">
+    <div id="location"></div>
+      <div class="wrap">
+        <div class="inner-wrap">
+          {% for collection in collections reversed %}
+
+            {% unless collection.handle == 'frontpage' %}
+
+              {% include 'collection-list-item' %}
+
+              {% comment %}{% if forloop.first %} / {% endif %}{% endcomment %}
+
+            {% endunless %}
+
+          {% endfor %}
+        </div>
+      </div>
+
+  </div>
+  {% endif %}
+
+{% comment %}  <div class="grid-item large--two-thirds push--large--one-sixth">
+
+      
+
+    <div class="rte">
+      {{ page.content }}
+    </div>
+
+  </div>{% endcomment %}
