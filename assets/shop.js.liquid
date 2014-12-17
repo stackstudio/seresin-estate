@@ -715,22 +715,21 @@ timber.productSingleLoad = function() {
 
 timber.getUrls = function(){
 
-  if(window.location.href.indexOf("collections") > -1) {
+  if(window.location.href.indexOf("collections") > + 1) {
 
-    function getParameterByName(name) {
+
+  } else {
+
+    {% comment %}    function getParameterByName(name) {
 
         var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 
-    }
+    }{% endcomment %}
 
       {% comment %}var qvalue = getParameterByName('q');{% endcomment %}
       var qvalue = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
       var url = window.location.search;
-      
-      if ( window.location.href.lastIndexOf('/white-wine')  && window.location.href.lastIndexOf('/red-wine') && window.location.href.lastIndexOf('/olive-oil') && window.location.href.lastIndexOf('/preserves') ) {
-        // do nowt
-      } else {
 
         {% comment %}if ( window.location.href.indexOf(qvalue) ) {{% endcomment %}
           var string = qvalue;
@@ -753,9 +752,6 @@ timber.getUrls = function(){
           $('#tasting-notes').css('display','block').html('<h1>'+ string +'</h1><p>' + dataWine +'</p>')
 
         {% comment %}}{% endcomment %}
-
-    }
-    {% comment %} ending else here for the url tester {% endcomment %}
 
   }
   
