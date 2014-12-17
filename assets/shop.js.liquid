@@ -714,6 +714,27 @@ timber.productSingleLoad = function() {
 };
 
 timber.getUrls = function(){
+  function hideAll() {
+    $('#collection-slider').css({
+      width: '100%',
+      float: 'none'
+    });
+    $('#wines .swiper-container').css({
+      width: '100%',
+      display: 'block'
+    });
+    $('#tasting-notes').css('display','none'); 
+  }
+
+  if(window.location.href.indexOf("collections/red-wine")) {
+     hideAll();   
+    } else if(window.location.href.indexOf("collections/white-wine")) {
+      hideAll();
+    } else if(window.location.href.indexOf("collections/oil")) {
+      hideAll();
+    } else if(window.location.href.indexOf("collections/conserves")) {
+      hideAll();
+  }
 
   if(window.location.href.indexOf("collections") > -1) {
 
@@ -728,15 +749,7 @@ timber.getUrls = function(){
     var qvalue = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
     var url = window.location.search;
 
-    if(window.location.href.indexOf("collections") + 'red-wine') {
-    
-    } else if(window.location.href.indexOf("collections") + 'white-wine') {
-
-    } else if(window.location.href.indexOf("collections") + 'oil') {
-
-    } else if(window.location.href.indexOf("collections") + 'conserves') {
-
-    } else if(window.location.href.lastIndexOf(qvalue)) {
+    if (window.location.href.indexOf(qvalue)) {
       var string = qvalue;
       var stringed = string.toLowerCase();
       var stringDash = stringed.replace(" ", "-");
@@ -755,8 +768,6 @@ timber.getUrls = function(){
       });
 
       $('#tasting-notes').css('display','block').html('<h1>'+ string +'</h1><p>' + dataWine +'</p>')
-
-    } else{
 
     }
 
