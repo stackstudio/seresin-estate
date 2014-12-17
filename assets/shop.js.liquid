@@ -714,9 +714,6 @@ timber.productSingleLoad = function() {
 };
 
 timber.getUrls = function(){
-if(window.location.href.indexOf("collections") + 'red-wine') {
-alert('this is red wine');
-}
 
   if(window.location.href.indexOf("collections") > -1) {
 
@@ -731,7 +728,15 @@ alert('this is red wine');
     var qvalue = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
     var url = window.location.search;
 
-    if (window.location.href.indexOf(qvalue)) {
+    if(window.location.href.indexOf("collections") + 'red-wine') {
+    
+    } else if(window.location.href.indexOf("collections") + 'white-wine') {
+
+    } else if(window.location.href.indexOf("collections") + 'oil') {
+
+    } else if(window.location.href.indexOf("collections") + 'conserves') {
+
+    } else if(window.location.href.lastIndexOf(qvalue) + 1) {
       var string = qvalue;
       var stringed = string.toLowerCase();
       var stringDash = stringed.replace(" ", "-");
@@ -750,6 +755,8 @@ alert('this is red wine');
       });
 
       $('#tasting-notes').css('display','block').html('<h1>'+ string +'</h1><p>' + dataWine +'</p>')
+
+    } else{
 
     }
 
