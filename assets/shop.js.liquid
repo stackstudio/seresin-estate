@@ -407,7 +407,6 @@ timber.getDining = function() {
     $.when.apply(null, dining).then(function() {
         var responsesS = [].slice.call(arguments);
         $.each(responsesS, function(i, data) {
-          console.log( data );
           var bodyWine = data[0].page.body_html,titleWine = data[0].page.title,idWine = data[0].page.handle;
           sliderDining.appendSlide('<section id="'+ idWine +'" href="#'+ idWine +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ titleWine +'</h1><hr class="style-line"><p class="">'+ bodyWine +'</p></div></div></figure></section>');
             timber.largeImageResize();
