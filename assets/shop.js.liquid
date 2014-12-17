@@ -736,7 +736,7 @@ timber.getUrls = function(){
 
     } else if(window.location.href.indexOf("collections") + 'conserves') {
 
-    } else if(window.location.href.lastIndexOf('/' + qvalue)) {
+    } else if(window.location.href.lastIndexOf(qvalue)) {
       var string = qvalue;
       var stringed = string.toLowerCase();
       var stringDash = stringed.replace(" ", "-");
