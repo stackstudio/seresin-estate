@@ -714,7 +714,10 @@ timber.productSingleLoad = function() {
 };
 
 timber.getUrls = function(){
-  function hideAll() {
+
+  if(window.location.href.indexOf("collections") > -1) {
+
+    function hideAll() {
     $('#collection-slider').css({
       width: '100%',
       float: 'none'
@@ -734,9 +737,7 @@ timber.getUrls = function(){
       hideAll();
     } else if(window.location.href.indexOf("collections/conserves")) {
       hideAll();
-  }
-
-  if(window.location.href.indexOf("collections") > -1) {
+  } else {}
 
     function getParameterByName(name) {
 
