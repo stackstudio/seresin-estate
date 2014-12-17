@@ -57,6 +57,7 @@ $small: 480px;
 $smallMed: 568px;
 $iphoneNew: 700px;
 $medium: 768px;
+$mediumL: 1024px;
 $large: 769px;
 
 $postSmall: $small + $viewportIncrement;
@@ -4538,17 +4539,16 @@ Media Queries
 
 }
 
+/* Ipad Landscape */
 
+@media screen and (max-width: $mediumL) {
 
-
-@media screen and (max-width: $medium) {
-
-.mobile-bg{
-  display: block;
-}
-.non-mobile-bg{
-  display: none;
-}
+  .mobile-bg{
+    display: block;
+  }
+  .non-mobile-bg{
+    display: none;
+  }
 
   .site-header, .site-footer{
     padding: $gutter/3 0;
@@ -4740,4 +4740,206 @@ Media Queries
 
 
 }
+
+/* Ipad portrait */
+@media screen and (max-width: $medium) {
+
+  .mobile-bg{
+    display: block;
+  }
+  .non-mobile-bg{
+    display: none;
+  }
+
+  .site-header, .site-footer{
+    padding: $gutter/3 0;
+    z-index: 77777;
+  }
+  .site-header .grid--full > .nav-bar .main-nav{
+    display: none;
+  }
+  .site-header .grid--full > .nav-bar{
+    width: 50%;
+  }
+  .cart-checkout #checkout{
+    display: none;
+  }
+  .main-content{
+    margin-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  video#full-screen-video.non-mobile-bg{
+    display: none;
+  }
+  .mobile-bg{
+    display: block;
+  }
+
+
+  .inner-wrap h1{
+    margin-top: -140px;
+    padding: 10px;
+  }
+  .inner-wrap h1 img,
+  .inner-wrap h3 img{
+    width: 98%;
+    height: auto;
+  }
+
+  .mobile-logo{
+    float: right;
+    width: 48%;
+  }
+  .mobile-nav{
+    display: block;
+  }
+  .mobile-navbar{
+    float: left;
+    width: 48%;
+    padding-left: 20px;
+    display: block;
+    padding-top: 5%;
+
+    & > #mobile-button img.open{
+      display: none;
+    }
+    & > #mobile-button img.closed{
+      display: block;
+    }
+  }
+  .header-logo {
+    text-align: right;
+    font-size: em(40px);
+    margin: 0 16px 8px;
+    max-width: 90px;
+    float: right;
+  }
+  #wines .swiper-container {
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
+  }
+  #collection-slider{
+    display: block;
+    padding: 0;
+  }
+  .swiper-container .swiper-wrapper{
+    padding-left: !important;
+    padding-right: !important;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 450px;
+    height: 100%;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide .product{
+    height: 75%;
+    position: relative;
+  }
+  .product-grid-image{
+    height: 86%;
+  }
+  .product-grid-image img {
+    height: 70%;
+  }
+
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .bag-info,
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .product{
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  .big-stretch .inner>.inner-stretch {
+    padding: 0 0%;
+    background: rgba(0,0,0,0.2);
+  }
+  .big-stretch .inner>.inner-stretch h1{
+    padding: 10px 30px;
+    font-size: 26px;
+  }
+  .big-stretch .inner>.inner-stretch p{
+    padding: 0 20px;
+    font-size: 12px;
+  }
+  .big-stretch .inner>.inner-stretch hr.style-line{
+    display: none;
+  }
+  #our-biodynamics .inner>.inner-stretch .box,
+  #the-people .inner>.inner-stretch .box,
+  #our-land .inner>.inner-stretch .box {
+    width: 65%;
+    padding: 20px;
+  }
+
+  #the-people .inner>.inner-stretch h1,
+  #the-people .inner>.inner-stretch p,
+  #our-land .inner>.inner-stretch h1,
+  #our-land .inner>.inner-stretch p{
+    color: #fff !important;
+  }
+
+  .rsMinW .rsArrowRight {
+    right: 4%;
+    bottom: 3%;
+  }
+  .rsMinW .rsArrowLeft {
+    right: 4%;
+    top: 3%;
+  }
+
+  /* generic pages */
+
+  #life-is-light{
+    background-position: 50% 61%;
+    background-repeat: no-repeat;
+    background-size: 203%;
+  }
+
+  /* store page */
+
+  #types{
+    top: 29%;
+    z-index: 777777;
+    width: 50%;
+  }
+  #types #product-filter{
+    top: 37%;
+  }
+
+  .store-large .inner-wrap {
+    padding: 10px 12% 84px 12%;
+  }
+
+  
+  .store-large .inner-wrap>#top-wines h1,
+  .store-large .inner-wrap>#top-wines .h1 {
+    margin: 5px 10px;
+    font-size: 2.4em;
+  }
+  .store-large .inner-wrap>h1:nth-child(3), .store-large .inner-wrap>.h1:nth-child(3) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  .store-large .inner-wrap>h1:nth-child(2), .store-large .inner-wrap>.h1:nth-child(2) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide {
+    width: 215px;
+  }
+
+  /* cart items */
+
+  .cart-row{
+    display: none;
+  }
+  .mobile-cart{
+    display: block;
+    padding: 5px;
+  }
+
+
+}
+
 
