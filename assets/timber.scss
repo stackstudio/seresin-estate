@@ -44,6 +44,10 @@
   #Notes and Form Feedback
   #Cart Page
   #Demo Styles - for empty store state
+<<<<<<< HEAD
+=======
+  #Plugin related styles
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 ==============================================================================*/
 
 /*============================================================================
@@ -51,11 +55,22 @@
 ==============================================================================*/
 $viewportIncrement: 1px;
 
+<<<<<<< HEAD
 $small: 480px;
+=======
+$xsmall: 360px;
+$small: 480px;
+$smallMed: 568px;
+$iphoneNew: 700px;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 $medium: 768px;
 $large: 769px;
 
 $postSmall: $small + $viewportIncrement;
+<<<<<<< HEAD
+=======
+$postSmallIph: $smallMed + $viewportIncrement;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 $preMedium: $medium - $viewportIncrement;
 $preLarge: $large - $viewportIncrement;
 
@@ -95,14 +110,30 @@ $colorLinkHover: lighten($colorPrimary, 15%);
 $colorTextBody: #333333;
 
 // Backgrounds
+<<<<<<< HEAD
 $colorBody: #fff;
+=======
+$colorBody: #ffffff;
+
+$colorHeadFoot: #000000;
+
+// Brand colours
+
+$brandGold: #B29346;
+
+$shopHeaderColour: #90908F;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 
 // Border colors
 $colorBorder: #e5e5e5;
 
 // Nav and dropdown link background
 $colorNav: #f2f2f2;
+<<<<<<< HEAD
 $colorNavText: #333;
+=======
+$colorNavText: #F1F1F2;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 
 // Site Footer
 $colorFooterBg: #f2f2f2;
@@ -123,6 +154,7 @@ $gridGutter: 24px; // can be a %, but nested grids will have smaller margins bec
 // Radius
 $radius: 3px;
 
+<<<<<<< HEAD
 /*================ Typography ================*/
 
 // Header Font
@@ -132,15 +164,80 @@ $headerFontWeight: 700;
 // Body Font
 $bodyFontStack: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baseFontSize: 14px; // Henseforth known as 1em
+=======
+
+$headerSize: 3.5em;
+
+$collectionHead: 1.4em;
+
+/*================ Typography ================*/
+
+// Requiem Display smallcaps
+@font-face {
+  font-family: "requiemdisplay-smallcaps";
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemdisplay-smallcaps.eot?11674 ');
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemdisplay-smallcaps.eot?11674 ?#iefix ') format("embedded-opentype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemdisplay-smallcaps.woff?11674 ') format("woff"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemdisplay-smallcaps.ttf?11674 ') format("truetype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemdisplay-smallcaps.svg?11674 ') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+$requiemDisplaySmallCaps: 'requiemdisplay-smallcaps';
+
+// Requiem Fine smallcaps
+@font-face {
+  font-family: "requiemfine-smallcaps";
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemfine-smallcaps.eot?11674 ');
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemfine-smallcaps.eot?11674 ?#iefix ') format("embedded-opentype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemfine-smallcaps.woff?11674 ') format("woff"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemfine-smallcaps.ttf?11674 ') format("truetype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemfine-smallcaps.svg?11674 ') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+$requiemFineSmallCaps: 'requiemfine-smallcaps';
+
+// Requiem Text Roman
+@font-face {
+  font-family: "requiemtext-roman";
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemtext-roman.eot?11674 ');
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemtext-roman.eot?11674 ?#iefix ') format("embedded-opentype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemtext-roman.woff?11674 ') format("woff"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemtext-roman.ttf?11674 ') format("truetype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/requiemtext-roman.svg?11674 ') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+$requiemTextRoman: 'requiemtext-roman';
+
+// Header Font
+$headerFontStack: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headerFontWeight: normal;
+
+// Body Font
+$bodyFontStack: $requiemDisplaySmallCaps;
+$baseFontSize: 12px; // Henseforth known as 1em
+
+$bodySerif: 'Chronicle Text G1 A', 'Chronicle Text G1 B';
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 
 // Icons
 @font-face {
   font-family: "icons";
+<<<<<<< HEAD
   src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.eot?11 ');
   src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.eot?11 ?#iefix ') format("embedded-opentype"),
        url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.woff?11 ') format("woff"),
        url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.ttf?11 ') format("truetype"),
        url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.svg?11 #timber-icons ') format("svg");
+=======
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.eot?11674 ');
+  src: url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.eot?11674 ?#iefix ') format("embedded-opentype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.woff?11674 ') format("woff"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.ttf?11674 ') format("truetype"),
+       url(' //cdn.shopify.com/s/files/1/0671/4839/t/2/assets/icons.svg?11674 #timber-icons ') format("svg");
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   font-weight: normal;
   font-style: normal;
 }
@@ -178,6 +275,13 @@ $socialIconFontStack: 'icons';
   @include prefix('transition', #{$transition});
 }
 
+<<<<<<< HEAD
+=======
+@mixin transform($transform) {
+  @include prefix('transform', #{$transform});
+}
+
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 @mixin gradient($from, $to, $fallback) {
   background: $fallback;
   background: -moz-linear-gradient(top, $from 0%, $to 100%);
@@ -188,6 +292,29 @@ $socialIconFontStack: 'icons';
   background: linear-gradient(top bottom, $from 0%, $to 100%);
 }
 
+<<<<<<< HEAD
+=======
+@mixin border-radius($radius:5px){
+    @if length($radius) != 1 {
+        $i:1;
+        //covers older modzilla browsers
+        @each $position in (topleft, topright, bottomright, bottomright) {
+            -moz-border-radius-#{$position}:nth($radius, $i);
+            $i:$i+1;
+        }
+        //Covers webkit browsers
+        -webkit-border-radius:nth($radius, 1) nth($radius, 2) nth($radius, 3) nth($radius, 4);
+        //Standard CSS3
+        border-radius: nth($radius, 1) nth($radius, 2) nth($radius, 3) nth($radius, 4);
+    } @else {
+        -webkit-border-radius: $radius;
+        -moz-border-radius: $radius;
+        border-radius: $radius;
+        -khtml-border-radius: $radius;
+    }
+}
+
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 @mixin backface($visibility: hidden) {
   @include prefix('backface-visibility', #{$visibility});
 }
@@ -214,6 +341,193 @@ $socialIconFontStack: 'icons';
   }
 }
 
+<<<<<<< HEAD
+=======
+/*
+ * Mixin for big bg images
+ * @include bg-image(repeat,cover,position);
+*/
+@mixin bg-image($repeat, $size, $position) {
+  background-position:$position;
+  background-repeat:$repeat;
+  background-size:$size;  
+}
+
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+@-moz-keyframes fadeIn {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+@keyframes fadeIn {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.animate {
+    -moz-animation-duration: 2.8s;
+    -webkit-animation-duration: 2.8s;
+    -o-animation-duration: 2.8s;
+    -ms-animation-duration: 2.8s;
+    animation-duration: 2.8s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+.step-1{
+  -moz-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    -o-animation-delay: 3s;
+    -ms-animation-delay: 3s;
+    animation-delay: 3s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+.step-2{
+  -moz-animation-delay: 3.5s;
+    -webkit-animation-delay: 3.5s;
+    -o-animation-delay: 3.5s;
+    -ms-animation-delay: 3.5s;
+    animation-delay: 3.5s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+.delay-1{
+  -moz-animation-delay: 1.2s;
+    -webkit-animation-delay: 1.2s;
+    -o-animation-delay: 1.2s;
+    -ms-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+.delay-2{
+  -moz-animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    -o-animation-delay: 2s;
+    -ms-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+
+
+/* flashing hand effect */
+
+@-webkit-keyframes fadeFlash {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+@-moz-keyframes fadeFlash {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+@-o-keyframes fadeFlash {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+@keyframes fadeFlash {
+  0% {
+    @include opacity(0);
+    @include transform('scale(0.85,0.85)');
+  }
+
+  100% {
+    @include opacity(1);
+    @include transform('scale(1.0,1.0)');
+  }
+}
+
+
+.fadeFlash {
+  -webkit-animation-name: fadeFlash;
+  -moz-animation-name: fadeFlash;
+  -o-animation-name: fadeFlash;
+  animation-name: fadeFlash;
+  -webkit-animation-duration: 1.5s; 
+  -webkit-animation-iteration-count:  infinite;
+  -webkit-transition-timing-function: linear;
+  animation-duration: 1.5s; 
+  animation-iteration-count:  infinite;
+  transition-timing-function: linear;
+  -o-animation-duration: 1.5s; 
+  -o-animation-iteration-count:  infinite;
+  -o-transition-timing-function: linear;
+  -moz-animation-duration: 1.5s; 
+  -moz-animation-iteration-count:  infinite;
+  -moz-transition-timing-function: linear;
+}
+
+
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 /*============================================================================
   Dependency-free breakpoint mixin
     - http://blog.grayghostvisuals.com/sass/sass-media-query-mixin/
@@ -690,6 +1004,47 @@ body {
 }
 
 /*============================================================================
+<<<<<<< HEAD
+=======
+  #Anchor animation helpers
+==============================================================================*/
+
+a, button{
+  -webkit-transition-property: inherit;
+  -moz-transition-property: inherit;
+  -ms-transition-property: inherit;
+  -o-transition-property: inherit;
+  transition-property: inherit;
+
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+  -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+}
+a:hover, button:hover{
+  color: $brandGold;
+  -webkit-transition-property: inherit;
+  -moz-transition-property: inherit;
+  -ms-transition-property: inherit;
+  -o-transition-property: inherit;
+  transition-property: inherit;
+
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+  -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+}
+
+/*============================================================================
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   #Helper Classes
 ==============================================================================*/
 .left { float: left; }
@@ -733,17 +1088,30 @@ input,
 textarea,
 button,
 select {
+<<<<<<< HEAD
   font-size: $baseFontSize;
   line-height: 1.6;
   font-family: $bodyFontStack;
   color: $colorTextBody;
   font-weight: 300;
+=======
+  font-size: 0.9em;
+  line-height: 1.6;
+  font-family: $bodySerif;
+  text-transform: uppercase;
+  color: $colorTextBody;
+  font-weight: normal;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
+<<<<<<< HEAD
   font-family: $headerFontStack;
+=======
+  font-family: $requiemDisplaySmallCaps;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   font-weight: $headerFontWeight;
   margin: 0 0 0.5em;
   line-height: 1.4;
@@ -1044,10 +1412,12 @@ html input[disabled] {
   white-space: nowrap;
   cursor: pointer;
   border: 1px solid transparent;
+  border: 1px solid $colorBtnPrimary;
   @include prefix('user-select', 'none');
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: $radius;
+  background: transparent;
 
   &.btn--small {
     padding: 4px 5px;
@@ -1063,9 +1433,14 @@ html input[disabled] {
     width: 100%;
   }
 
+
   /*================ Set primary button colors - can override later ================*/
   background-color: $colorBtnPrimary;
   color: #fff;
+
+  /*================ Set primary button colors - can override later ================*/  
+
+  color: $colorBtnPrimary;
 
   &:hover {
     background-color: $colorBtnPrimaryHover;
@@ -1219,6 +1594,22 @@ img.auto,
     width: 100%;
     height: 100%;
   }
+}
+
+.image-bigger{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 5555;
+  @include bg-image(no-repeat, cover, center -44%);
+}
+
+.image-normal{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 5555;
+  @include bg-image(no-repeat, cover, center center);
 }
 
 
@@ -1606,7 +1997,7 @@ label.error {
     color: #bbbbbb;
 
     &:hover {
-      color: darken(#bbbbbb, 10%);
+      color: darken($brandGold, 10%);
     }
   }
 }
@@ -1728,6 +2119,24 @@ label.error {
   }
 
   @include at-query ($min, $large) {
+=======
+.mobile-navbar,
+.mobile-nav{
+  display: none;
+}
+.site-header {
+  padding: $gutter/1 0;
+  background: $colorHeadFoot;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 888888;
+
+  @include at-query ($min, $large) {
+    padding: $gutter/9 0;
+  }
+
+  @include at-query ($min, $large) {
     .grid {
       display: table;
       table-layout: fixed;
@@ -1742,6 +2151,69 @@ label.error {
   }
 }
 
+=======
+        float: right;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      & > .nav-bar {
+        float: left;
+        display: table-cell;
+        padding-left: 20px;
+        padding-top: 1%;
+
+        & > .cart-checkout{
+          padding-left: 0px;
+        }
+
+        & > .main-nav{
+          clear: both;
+          padding-top: 55px;
+        }
+        & > .cart-checkout #cartToggle{
+          padding: 6px;
+          color: $colorNavText;
+          border: 1px solid $colorNavText;
+          @include border-radius($radius:6px);
+          text-decoration: none;
+
+          &:hover{
+            color: white;
+            background: $brandGold;
+            border: 1px solid $brandGold;
+          }
+        }
+        & > .cart-checkout #checkout{
+          padding: 6px;
+          color: $colorNavText;
+          border: 1px solid $colorNavText;
+          @include border-radius($radius:6px);
+          text-decoration: none;
+          margin-left: 10px;
+
+          &:hover{
+            color: white;
+            background: $brandGold;
+            border: 1px solid $brandGold;
+          }
+        }
+      }
+
+      & > .cart-checkout {
+        float: none;
+        display: block;
+        padding-left: 10px;
+        position: absolute;
+        top: 0px;
+        padding-top: 20px;
+      }
+    }
+  /*}*/
+}
+
+
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 .header-logo {
   text-align: center;
   font-size: em(40px);
@@ -1783,7 +2255,42 @@ label.error {
   #Site Nav and Dropdowns
 ==============================================================================*/
 .nav-bar {
+<<<<<<< HEAD
   background-color: $colorNav;
+=======
+
+  & > #mobile-button{
+    display: none;
+  }
+
+  @media screen and (max-width: $small) {
+
+    float: left;
+    width: 52%;
+    padding-bottom: 9%;
+
+    & > #mobile-button{
+      display: block;
+    }
+    & > .main-nav{
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $smallMed) {
+
+    float: left;
+    width: 48%;
+    padding-bottom: 9%;
+
+    & > #mobile-button{
+      display: block;
+    }
+    & > .main-nav{
+      display: none;
+    }
+  }
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 
   a {
     color: $colorNavText;
@@ -1796,7 +2303,16 @@ label.error {
   }
 
   ul {
+<<<<<<< HEAD
     margin: 0;
+=======
+    margin: 5px 0;
+    display: inline-block;
+
+    & > ul{
+      margin: 5px 10px;
+    }
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   }
 
   li {
@@ -1804,6 +2320,20 @@ label.error {
   }
 }
 
+<<<<<<< HEAD
+=======
+.mobile-nav{
+  clear: both;
+  width: 100%;
+  background: transparent;
+  height: 0px;
+  overflow: hidden;
+}
+.mobile-nav li{
+  width: 100%;
+}
+
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 .site-nav {
   font-size: em(16px);
   cursor: default;
@@ -1825,8 +2355,18 @@ label.error {
   a {
     display: block;
     text-decoration: none;
+<<<<<<< HEAD
     padding: $gutter/2;
     white-space: nowrap;
+=======
+    padding:5px 12px 4px 12px;
+    white-space: nowrap;
+    font-weight: 400;
+
+    &:hover{
+      color: $brandGold;
+    }
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   }
 
   @include at-query ($max, $medium) {
@@ -1836,16 +2376,45 @@ label.error {
 }
 
 .site-nav--active > a {
+<<<<<<< HEAD
   font-weight: bold;
+=======
+  color: $brandGold;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
 }
 
 /*================ Dropdowns ================*/
 .site-nav--dropdown {
+<<<<<<< HEAD
   display: none;
   position: absolute;
   left: 0;
   z-index: 5;
 
+=======
+  position: relative;
+  z-index: 5;
+
+  li{
+    display: inline-block;
+  }
+
+  li a{
+    padding: 0px 18px 0 0px;
+    background: transparent;
+    font-weight: 100;
+    color: #888888;
+
+    &:hover{
+      color: $brandGold;
+    }
+  }
+
+  li.site-nav--active a{
+    color: $brandGold;
+  }
+
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   .supports-no-touch .site-nav--has-dropdown:hover &,
   .site-nav--has-dropdown.nav-hover &,
   .nav-focus + & {
@@ -1858,7 +2427,11 @@ label.error {
     &:hover,
     &:active,
     &:focus {
+<<<<<<< HEAD
       background-color: darken($colorNav, 10%);
+=======
+      color: white;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
     }
   }
 }
@@ -1885,6 +2458,7 @@ label.error {
   #Site Footer
 ==============================================================================*/
 .site-footer {
+<<<<<<< HEAD
   background-color: $colorFooterBg;
   border-top: 1px solid $colorBorder;
   padding: $gutter 0;
@@ -1892,6 +2466,41 @@ label.error {
 
   @include at-query ($min, $large) {
     padding: $gutter*2 0;
+=======
+  padding: $gutter 0;
+  background: $colorHeadFoot;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  color: $colorFooterText;
+  z-index: 77777;
+
+  @include at-query ($min, $large) {
+    padding: $gutter/1 0 $gutter/1 0;
+  }
+  @include at-query ($min, $large) {
+    .grid {
+
+      & > .social-main {
+        float: right;
+        display: table-cell;
+        padding-right: 20px;
+
+        & > ul{
+          margin: 0;
+        }
+      }
+      & > .address {
+        float: left;
+        display: table-cell;
+        padding-left: 45px;
+
+        & > p{
+          color: $brandGold;
+        }
+      }
+    }
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
   }
 }
 
@@ -1946,6 +2555,7 @@ label.error {
   }
 }
 
+<<<<<<< HEAD
 
 /*============================================================================
   #Product Page
@@ -2068,10 +2678,353 @@ label.error {
 
     &:hover {
       color: $colorPrimary;
+=======
+/*============================================================================
+  #Generic Pages
+==============================================================================*/
+
+#full-screen-video { 
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
+
+.mobile-bg{
+  display: none;
+}
+
+.wrap{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.inner-wrap{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+  & > h1{
+    margin-left: -20px;
+    font-size: 14px;
+    margin: 0;
+  }
+  & > h3{
+    margin-left: -20px;
+    font-size: 14px;
+    margin-top: -9px;
+  }
+}
+.store-large{
+  @include bg-image(no-repeat, cover, 0 73%);
+}
+.store-large .inner-wrap{
+
+  color: inherit;
+  padding: 0px 25%;
+
+    & > h1{
+      margin: 20px 40px;
+      font-family: $requiemDisplaySmallCaps;
+      text-transform: uppercase;
+      font-size: 4.2em;
+      line-height: 0.9em;
+      display: inline-block;
+
+      &:nth-child(2){
+       font-size: 2.5em;
+        margin-top: 10px;
+        margin-right: 10px;
+      }
+
+      &:nth-child(3){
+       font-size: 2.5em;
+        margin-top: 10px;
+        margin-right: 10px;      
+      }
+
+      & > a{
+        color: $colorNavText;
+      }
+      & > a:hover{
+          color: $brandGold;
+        }
+    }
+    & > #top-wines h1{
+      margin: 10px 30px;
+      font-family: $requiemDisplaySmallCaps;
+      text-transform: uppercase;
+      font-size: 4.2em;
+      line-height: 0.9em;
+      display: inline-block;
+
+      & > a{
+        color: $colorNavText;
+      }
+      & > a:hover{
+        color: $brandGold;
+      }
+    }
+  
+}
+.store-large .inner-wrap h1 hr{
+  margin: 5px 4px;
+}
+.big-stretch{
+  width: 100%;
+  height: 100%;
+}
+.big-stretch .inner{
+
+  display: table;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  & > .inner-stretch{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 37%; /*718px*/
+  }
+
+  & > .inner-stretch hr.style-line{
+    border: 0px;
+    background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/style-line.png?11674) no-repeat center;
+    height: 10px;
+    margin: 0px;
+    background-size: 89%;
+  }
+
+  & > .rsABlock{
+    display: grid !important;
+  }
+
+  & > .inner-stretch h1{
+    margin-left: -20px;
+    margin: 0;
+    font-family: $requiemDisplaySmallCaps;
+    text-transform: uppercase;
+    color: $colorNavText;
+    font-size: 4.2em;
+    line-height: 0.9em;
+  }
+
+  & > .inner-stretch .style-line{
+  }
+
+  & > .inner-stretch p{
+    padding: 0 5%;
+    font-size: 1.3em;
+    color: $colorNavText;
+    font-family: $bodySerif;
+    line-height: 1.3em;
+    font-weight: 400;
+    text-transform: none;
+    font-style: italic;
+  }
+  
+}
+
+#top-wines:first-child{
+  background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/store-line.png?11674) no-repeat bottom;
+}
+
+#product-holder{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+#product-inner{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* The product collection loader */
+
+#product-loader{
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  @include opacity(1);
+  z-index: 5555;
+  display: table;
+}
+.loading{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  background: white;
+}
+.load{
+  width: 200px;
+height: 200px;
+margin: 0 auto;
+}
+
+.article-container-land{
+  @include opacity(0);
+}
+.article-container-land .swiper-container{
+  width: 1280px;
+  height: 660px;
+  color: #000;
+}
+.article-container-land .swiper-container .swiper-wrapper{
+  width: 100%;
+  height: 100%;
+}
+.article-container-land .swiper-container .swiper-wrapper .swiper-slide{
+  width: 300px;
+  height: 200px;
+}
+#land-loader{
+  background: #000000;
+  width: 100%;
+}
+
+#life-is-light .inner{
+
+  color: #58595B;
+
+  & > .inner-stretch h1{
+    color: #58595B;
+    padding: 0 100px;
+
+    & > span.italic{
+      font-style: italic;
+      font-family: times;
+      text-transform: lowercase;
+      font-size: 1.1em;
+      font-weight: lighter;
+    }
+  }
+  & > .inner-stretch p{
+    color: #58595B;
+  }
+  & > .inner-stretch .style-line{
+    background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/store-line-small.png?11674) no-repeat bottom;
+  }
+}
+#the-people .inner{
+
+  color: #58595B;
+
+  & > .inner-stretch h1{
+    color: #fff;
+  }
+  & > .inner-stretch p{
+    color: #fff;
+  }
+  & > .inner-stretch hr.style-line{
+    background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/style-line.png?11674) no-repeat center;
+  }
+  & > .inner-stretch{
+    padding: 0px;
+  }
+  & > .inner-stretch .box{
+    float:right;
+    width: 24%;
+    margin-right: 13%;
+  }
+}
+#our-land .inner{
+
+  color: #58595B;
+
+  & > .inner-stretch h1{
+    color: #58595B;
+  }
+  & > .inner-stretch p{
+    color: #58595B;
+  }
+  & > .inner-stretch hr.style-line{
+    background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/style-line-dark.png?11674) no-repeat center;
+  }
+  & > .inner-stretch{
+    padding: 0px;
+  }
+  & > .inner-stretch .box{
+    float:right;
+    width: 24%;
+    margin-right: 13%;
+  }
+}
+
+#our-biodynamics .inner{
+  & > .inner-stretch{
+    padding: 0px;
+  }
+  & > .inner-stretch .box{
+    float:right;
+    width: 24%;
+    margin-right: 13%;
+  }
+}
+
+
+#collection-slider{
+  height: auto;
+  position: relative;
+  display: table;
+  width: 100%;
+  @include opacity(0);
+}
+
+#wines .swiper-container{
+  width: 1280px;
+  height: 660px;
+}
+/*#wines .swiper-container .swiper-wrapper{
+  width: 100% !important;
+}*/
+#wines .swiper-container .swiper-wrapper .swiper-slide{
+  @include opacity(0.7);
+  text-align: center;
+  width: 260px;
+  position: relative;
+
+  & > form .product{
+    position: absolute;
+    background: white;
+    width: 100%;
+  }
+
+  & > form .bag-info{
+    @include opacity(0);
+    top: 0px;
+    width: 238px;
+    margin: 0px auto;
+    padding: 10px 0;
+
+    & > .quantity-selector{
+      display: inline-block;
+      width: 40px;
+      vertical-align: baseline;
+    }
+    & > .js-qty{
+      display: inline-block;
+      width: 40px;
+      vertical-align: baseline;
+    }
+
+    & > .btn{
+      display: block;
+      margin: 0 auto;
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
     }
   }
 }
 
+<<<<<<< HEAD
 .cart-subtotal {
   margin-bottom: $gutter;
 }
@@ -2093,3 +3046,1960 @@ label.error {
   font-size: em(12px);
   text-decoration: none;
 }
+=======
+#wines .swiper-container .swiper-wrapper .swiper-slide:first-child form .bag-info{
+  @include opacity(1);
+}
+
+
+#wines .swiper-container .swiper-wrapper .swiper-slide-active{
+  @include opacity(1);
+}
+.arrow-left,
+.arrow-right{
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 40px;
+  z-index: 5000;
+}
+.arrow-left{
+  left: 0%;
+}
+.arrow-right{
+  right: 0%;
+}
+.arrow-left a{
+  background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/arrow-left.png?11674) no-repeat center center;
+  background-size: contain;
+  display: block;
+  width: 100%;
+height: 100%;
+}
+.arrow-right a{
+  background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/arrow-right.png?11674) no-repeat center center;
+  background-size: contain;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#types{
+  position: absolute;
+  padding: 22px;
+  width: 308px;
+  left: -307px;
+  top: 0px;
+  background: $colorHeadFoot;
+  height: 100%;
+  z-index: 777777;
+}
+#types #product-filter{
+  position: absolute;
+  right: -81px;
+  padding: 10px;
+  background: black;
+  top: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: $brandGold;
+  line-height: 1em;
+}
+#types #product-filter span{
+  width: 75%;
+  display: block;
+  margin: 0 auto;
+}
+#types ul{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+#types ul li{
+  display: inline-block;
+  width: 100%;
+  margin: 10px 0;
+}
+#types ul li a{
+  font-size: $collectionHead;
+  text-decoration: none;
+  color: $brandGold;
+  text-transform: capitalize;
+font-style: italic;
+}
+
+
+/** Product main area **/
+
+#product-main{
+  @include opacity(0);
+}
+
+#product-main #product-images{
+  padding: 3% 0;
+}
+
+#product-main{
+
+  color: $shopHeaderColour;
+
+  & > h1{
+    color: $shopHeaderColour;
+    font-weight: 100;
+  }
+
+  & > .h2{
+    color: $shopHeaderColour;
+  }
+
+}
+
+#tasting-notes{
+  display: none;
+  float: right;
+  width: 46%;
+  padding: 20px;
+}
+#tasting-notes p{
+  font-style: italic;
+  font-family: $bodySerif;
+  text-transform: none;
+}
+
+#product-main .product-photo-container{
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  position: relative;
+}
+
+#product-detail{
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+
+  & > h1{
+    margin: 0;
+    line-height: 1.1em;
+  }
+
+  & > div form#addToCartForm .quantity-selector{
+    display: inline-block;
+  }
+  & > div form#addToCartForm .js-qty{
+    display: inline-block;
+  }
+
+  & > div form#addToCartForm #productPrice{
+    display: block;
+    width: 100%;
+  }
+
+  & > div form#addToCartForm #addToCart{
+    display: block;
+    width: 44%;
+    margin: 0 auto;
+  }
+
+  & > div form#addToCartForm .selector-wrapper select{
+    max-width: 100%;
+  }
+}
+
+#productThumbs{
+  height: 500px;
+  width: 100%;
+  z-index: 3000;
+
+  & > .rsOverflow .rsArrow{
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 40px;
+    z-index: 5000;
+  }
+  & > .rsOverflow .rsArrowLeft{
+    left: 4%;
+
+    & > .rsArrowIcn{
+      background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/arrow-left.png?11674) no-repeat center center;
+      background-size: contain;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  & > .rsOverflow .rsArrowRight{
+    right: 4%;
+
+    & > .rsArrowIcn{
+      background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/arrow-right.png?11674) no-repeat center center;
+      background-size: contain;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+#product-description{
+  padding: 3% 6%;
+  height: 100%;
+}
+#product-description h1{
+  width: 100%;
+  text-align: center;
+}
+#product-description p{
+  font-style: italic;
+  font-weight: 400;
+}
+
+.cart-payment{
+  width: 110px;
+  float: left;
+}
+.cart-others{
+  width: auto;
+  float: left;
+
+  & > .other-payment{
+    display: inline-block;
+  }
+}
+/*======================================
+ # Some fading magic here
+========================*/
+
+#life-is-light {
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/life-is-light-bg-default.png?11674);
+  @include bg-image(no-repeat, cover, right 61%);
+}
+#our-biodynamics{
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/biodynamics-bg-default.png?11674);
+  @include bg-image(no-repeat, cover, center);
+}
+#winemaking{
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/winemaking-dining.jpg?11674);
+  @include bg-image(no-repeat, cover, center -7%);
+}
+#our-land{
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/our-land-bg-default.png?11674);
+  @include bg-image(no-repeat, cover, left bottom);
+}
+#the-people{
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/people-bg-default.png?11674);
+  @include bg-image(no-repeat, cover, left 44%);
+}
+
+/*======================================
+ # The dining page elements
+========================*/
+
+.article-container-dining{
+  @include opacity(0);
+}
+
+#dining-loader{
+  background: black;
+  width: 100%;
+}
+
+#waterfall-bay-dinner-series {
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/waterfall-bay.jpg?11674);
+  @include bg-image(no-repeat, cover, center -17%);
+}
+#the-dinner{
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/the-dinner.jpg?11674);
+  @include bg-image(no-repeat, cover, center top);
+}
+#book-now{
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/book-now.jpg?11674);
+  @include bg-image(no-repeat, cover, center top);
+}
+#dining #winemaking{
+  background-image: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/winemaking-dining.jpg?11674);
+  @include bg-image(no-repeat, cover, center -7%);
+}
+
+
+#waterfall-bay-dinner-series {
+
+  & .inner > .inner-stretch p{
+    display: none;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    display: none;
+  }
+ 
+}
+#the-dinner{
+
+  & .inner > .inner-stretch {
+    padding: 0px;
+  }
+
+  & .inner > .inner-stretch .box {
+    float: right;
+    width: 31%;
+    margin-right: 13%;
+  }
+
+  & .inner > .inner-stretch h1{
+    display: none;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    display: none;
+  }
+  
+}
+#book-now{
+
+  & .inner > .inner-stretch h1{
+    display: none;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    display: none;
+  }
+
+  & .inner > .inner-stretch {
+    padding: 0px;
+  }
+
+  & .inner > .inner-stretch .box {
+    float: right;
+    width: 30%;
+    margin-right: 11%;
+  }
+
+  & .inner > .inner-stretch .box .wrap .btn {
+    padding: 15px 17px;
+    font-size: 2em;
+    border: solid 1px #fff;
+
+    &:hover{
+      background: $brandGold;
+    }
+  }
+  
+}
+#winemaking{
+
+  & .inner > .inner-stretch h1{
+    color: #58595B;
+  }
+
+  & .inner > .inner-stretch p{
+    color: #58595B;
+  }
+
+  & .inner > .inner-stretch hr.style-line{
+    background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/style-line-dark.png?11674) no-repeat center;
+  }
+}
+
+
+/*============================================================================
+  #Product Page
+==============================================================================*/
+.product-variants {
+  display: none;
+
+  .no-js & {
+    display: block;
+  }
+}
+
+@include at-query($min, $large) {
+  .selector-wrapper,
+  .product-variants {
+    select {
+      max-width: 40%;
+    }
+  }
+}
+
+.product-photo-container {
+  margin-bottom: $gutter;
+}
+
+.product-photo-container,
+.product-photo-thumbs {
+  a, img {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  li {
+    margin-bottom: $gutter;
+    width: 285px;
+  }
+}
+
+/*============================================================================
+  #Blogs and Comments
+==============================================================================*/
+.comment {
+  margin-bottom: $gutter;
+
+  & + & {
+    border-top: 1px solid $colorBorder;
+    padding-top: $gutter;
+  }
+}
+
+
+/*============================================================================
+  #Notes and Form Feedback
+==============================================================================*/
+.note,
+.errors {
+  border-radius: $radius;
+  padding: $gutter/2;
+  margin-bottom: $gutter/2;
+  border: 1px solid transparent;
+
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.note {
+  border-color: $colorBorder;
+}
+
+.errors {
+  ul {
+    list-style: disc outside;
+    margin-left: 20px;
+  }
+}
+
+.form-success {
+  color: $successGreen;
+  background-color: lighten($successGreen, 65%);
+  border-color: $successGreen;
+}
+
+.form-error,
+.errors {
+  color: $errorRed;
+  background-color: $errorRedBg;
+  border-color: $errorRed;
+}
+
+
+/*============================================================================
+  #Cart Page
+==============================================================================*/
+
+.mobile-cart{
+  display: none;
+}
+.ajaxifyCart--content h1{
+  margin: 0;
+  padding: 0;
+}
+
+.cart-row {
+  margin-top: $gutter;
+  padding-top: $gutter;
+  width: 15%;
+  display: inline-block;
+  vertical-align: top;
+
+  & > .grid > .grid-item > .grid > .image{
+    height: 175px;
+    min-width: auto;
+    float: left;
+    padding: 0 0 0 11px;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child{
+    width: 100%;
+  }
+
+  &:first-child {
+    padding-top: 0;
+    border-top: 0 none;
+  }
+
+  a.ajaxifyCart--remove{
+    @include border-radius($radius:20px);
+    padding: 10px 15px;
+    background: $colorTextBody;
+  }
+
+  a {
+    color: $brandGold;
+    text-decoration: none;
+
+    &:hover {
+      color: darken($brandGold, 10%);
+    }
+  }
+}
+
+.cart-subtotal {
+  margin-bottom: $gutter;
+}
+
+.cart-subtotal--price {
+  margin: 0 0 0 $gutter/3;
+  display: inline;
+}
+
+#empty-cart h1{
+  font-size: 4.2em;
+  line-height: 0.9em;
+}
+#empty-cart h3{
+  font-size: 2.8em;
+  line-height: 0.9em;
+}
+
+/*============================================================================
+  #Demo Styles - for empty store state
+==============================================================================*/
+/* v1.0.5 */
+/* Core RS CSS file. 95% of time you shouldn't change anything here. */
+.royalSlider {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  direction: ltr;
+}
+.royalSlider > * {
+  float: left;
+}
+
+.rsWebkit3d .rsSlide {
+  -webkit-transform: translateZ(0);
+}
+
+
+.rsFade.rsWebkit3d .rsSlide,
+.rsFade.rsWebkit3d img,
+.rsFade.rsWebkit3d .rsContainer {
+    -webkit-transform: none;
+}
+.rsOverflow {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.rsVisibleNearbyWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.rsVisibleNearbyWrap .rsOverflow {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+}
+.rsContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.rsArrow,
+.rsThumbsArrow {
+  cursor: pointer;
+}
+
+.rsThumb {
+  float: left;
+  position: relative;
+}
+
+
+.rsArrow,
+.rsNav,
+.rsThumbsArrow {
+  opacity: 1;
+  -webkit-transition:opacity 0.3s linear;
+  -moz-transition:opacity 0.3s linear;
+  -o-transition:opacity 0.3s linear;
+  transition:opacity 0.3s linear;
+}
+.rsHidden {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition:visibility 0s linear 0.3s,opacity 0.3s linear;
+  -moz-transition:visibility 0s linear 0.3s,opacity 0.3s linear;
+  -o-transition:visibility 0s linear 0.3s,opacity 0.3s linear;
+  transition:visibility 0s linear 0.3s,opacity 0.3s linear;
+}
+
+
+.rsGCaption {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+/* Fullscreen options, very important ^^ */
+.royalSlider.rsFullscreen {
+  position: fixed !important;
+  height: auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 2147483647 !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+
+.royalSlider .rsSlide.rsFakePreloader {
+  opacity: 1 !important;
+  -webkit-transition: 0s;
+  -moz-transition: 0s;
+  -o-transition:  0s;
+  transition:  0s;
+  display: none;
+}
+
+.rsSlide {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  overflow: hidden;
+  
+  height: 100%;
+  width: 100%;
+}
+
+.royalSlider.rsAutoHeight,
+.rsAutoHeight .rsSlide {
+  height: auto;
+}
+
+.rsContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.rsPreloader {
+  position:absolute;
+  z-index: 0; 
+}
+
+.rsNav {
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.rsNavItem {
+  -webkit-tap-highlight-color:rgba(0,0,0,0.25);
+}
+
+.rsThumbs {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  z-index: 22;
+}
+.rsTabs {
+  float: left;
+  background: none !important;
+}
+.rsTabs,
+.rsThumbs {
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+
+.rsVideoContainer {
+  /*left: 0;
+  top: 0;
+  position: absolute;*/
+  /*width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  float: left;*/
+  width: auto;
+  height: auto;
+  line-height: 0;
+  position: relative;
+}
+.rsVideoFrameHolder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #141414;
+  opacity: 0;
+  -webkit-transition: .3s;
+}
+.rsVideoFrameHolder.rsVideoActive {
+  opacity: 1;
+}
+.rsVideoContainer iframe,
+.rsVideoContainer video,
+.rsVideoContainer embed,
+.rsVideoContainer .rsVideoObj {
+  position: absolute;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+/* ios controls over video bug, shifting video */
+.rsVideoContainer.rsIOSVideo iframe,
+.rsVideoContainer.rsIOSVideo video,
+.rsVideoContainer.rsIOSVideo embed {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 44px;
+}
+
+.rsABlock {
+  z-index: 15;
+  
+}
+
+img.rsImg {
+  max-width: none;
+}
+
+.grab-cursor {
+  cursor:url(grab.png) 8 8, move; 
+}
+
+.grabbing-cursor{ 
+  cursor:url(grabbing.png) 8 8, move;
+}
+
+.rsNoDrag {
+  cursor: auto;
+}
+
+.rsLink {
+  left:0;
+  top:0;
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:block;  
+  z-index: 20;
+  background: url(blank.gif);
+}
+
+/******************************
+*
+*  RoyalSlider White Controls Skin
+*
+*    1. Arrows 
+*    2. Bullets
+*    3. Thumbnails
+*    4. Tabs
+*    5. Fullscreen button
+*    6. Play/close video button
+*    7. Preloader
+*    8. Caption
+*    
+*  Sprite: 'rs-minimal-white.png'
+*  Feel free to edit anything
+*  If you don't some part - just delete it
+* 
+******************************/
+
+
+/* Background */
+.rsMinW,
+.rsMinW .rsOverflow,
+.rsMinW .rsSlide,
+.rsMinW .rsVideoFrameHolder,
+.rsMinW .rsThumbs {
+  background: black;
+  color: #FFF;
+}
+
+
+/***************
+*
+*  1. Arrows
+*
+****************/
+
+.rsMinW .rsArrow {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  display: block;
+  cursor: pointer;  
+  z-index: 21;
+}
+
+.rsMinW .rsArrowLeft { right: 5%;
+top: 20%; }
+.rsMinW .rsArrowRight { right: 5%;
+bottom: 20%; }
+
+.rsMinW .rsArrowIcn {   
+  width: 24px;
+  height: 24px;
+  margin-top: 3px;
+  margin-left: 3px;
+  position: absolute;
+  cursor: pointer;  
+  background: url(//cdn.shopify.com/s/files/1/0671/4839/t/2/assets/seresin-arrow.png?11674) transparent;
+  
+  border-radius: 2px;
+}
+.rsMinW .rsArrowIcn:hover {
+
+}
+
+
+.rsMinW.rsHor .rsArrowLeft .rsArrowIcn { background-position: -68px -36px; }
+.rsMinW.rsHor .rsArrowRight .rsArrowIcn { background-position: -68px -68px; }
+
+.rsMinW.rsVer .rsArrowLeft .rsArrowIcn { background-position: -92px -41px; }
+.rsMinW.rsVer .rsArrowRight .rsArrowIcn { background-position: -93px -67px; }
+
+.rsMinW .rsArrowDisabled .rsArrowIcn { opacity: .3 !important; filter: alpha(opacity=30);  *display: none; }
+
+
+/***************
+*
+*  2. Bullets
+*
+****************/
+
+.rsMinW .rsBullets {
+  z-index: 35;
+  padding: 10px;
+  height: auto;
+
+  text-align: center;
+  line-height: 6px;
+  overflow: hidden;
+}
+.rsMinW .rsBullet {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  *display:inline; 
+  *zoom:1;
+  padding: 6px 5px 6px 4px;
+  margin: 0 2px;
+}
+.rsMinW .rsBullet span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #CCC;
+  /*background: rgba(210,208,205,1.0);*/
+  border: solid 3px rgba(210,208,205,1.0);
+}
+.rsMinW .rsBullet.rsNavSelected span {
+  background: #5D5D5D;
+}
+
+
+
+
+
+/***************
+*
+*  3. Thumbnails
+*
+****************/
+
+.rsMinW .rsThumbsHor {
+  width: 100%;
+  height: 72px;
+}
+.rsMinW .rsThumbsVer {
+  width: 96px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.rsMinW.rsWithThumbsHor .rsThumbsContainer {
+  position: relative;
+  height: 100%;
+}
+.rsMinW.rsWithThumbsVer .rsThumbsContainer {
+  position: relative;
+  width: 100%;
+}
+.rsMinW .rsThumb {
+  float: left;
+  overflow: hidden;
+  width: 96px;
+  height: 72px;
+}
+.rsMinW .rsThumb img {
+  width: 100%;
+  height: 100%;
+}
+.rsMinW .rsThumb.rsNavSelected {
+  background: #333;
+}
+.rsMinW .rsThumb.rsNavSelected img {
+  filter: alpha(opacity=40);
+  opacity: 0.7;
+}
+.rsMinW .rsThumb.rsNavSelected span.thumbIco {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 2px solid #FFF;
+  border: 2px solid rgba(255,255,255,0.9);
+  -webkit-backface-visibility: hidden;
+} 
+.rsMinW .rsTmb {
+  display: block;
+}
+
+
+
+
+/* Thumbnails arrow icons */
+.rsMinW .rsThumbsArrow {
+  height: 100%;
+  width: 20px;
+  position: absolute;
+  display: block;
+  cursor: pointer;  
+  z-index: 21;  
+}
+.rsMinW.rsWithThumbsVer .rsThumbsArrow {
+  width: 100%;
+  height: 20px;
+}
+.rsMinW.rsWithThumbsVer .rsThumbsArrowLeft { top: 0; left: 0; }
+.rsMinW.rsWithThumbsVer .rsThumbsArrowRight { bottom: 0;  left: 0; }
+
+.rsMinW.rsWithThumbsHor .rsThumbsArrowLeft { left: 0; top: 0; }
+.rsMinW.rsWithThumbsHor .rsThumbsArrowRight { right: 0; top:0; }
+
+.rsMinW .rsThumbsArrowIcn {   
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-top:-8px;  
+  margin-left: -8px;
+  position: absolute; 
+  cursor: pointer;  
+  background: url('rs-minimal-white.png');
+}
+
+.rsMinW.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn { background-position: -128px -32px; }
+.rsMinW.rsWithThumbsHor .rsThumbsArrowRight .rsThumbsArrowIcn { background-position: -128px -48px; }
+
+.rsMinW.rsWithThumbsVer .rsThumbsArrowLeft .rsThumbsArrowIcn { background-position: -144px -32px; }
+.rsMinW.rsWithThumbsVer .rsThumbsArrowRight .rsThumbsArrowIcn { background-position: -144px -48px; }
+
+.rsMinW .rsThumbsArrowDisabled { display: none !important; }
+
+/* Thumbnails resizing on smaller screens */
+@media screen and (min-width: 0px) and (max-width: 800px) {
+  .rsMinW .rsThumb {
+    width: 59px;
+    height: 44px;
+  }
+  .rsMinW .rsThumbsHor {
+    height: 44px;
+  }
+  .rsMinW .rsThumbsVer {
+    width: 59px;
+  }
+}
+
+
+
+
+/***************
+*
+*  4. Tabs
+*
+****************/
+
+.rsMinW .rsTabs {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align:center;
+  overflow: hidden; padding-top: 12px; position: relative;
+}
+.rsMinW .rsTab {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  height: auto;
+  width: auto;
+  color: #333;
+  padding: 5px 13px 6px;
+  min-width: 72px;
+  border: 1px solid #D9D9DD;
+  border-right: 1px solid #f5f5f5;
+  text-decoration: none;
+
+  background-color: #000;
+  background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4); 
+  background-image:    -moz-linear-gradient(top, #fefefe, #f4f4f4);
+  background-image:         linear-gradient(to bottom, #fefefe, #f4f4f4);
+
+  *display:inline; 
+  *zoom:1;
+}
+.rsMinW .rsTab:first-child {
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.rsMinW .rsTab:last-child { 
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  border-right:  1px solid #cfcfcf;
+}
+.rsMinW .rsTab:active { 
+  border: 1px solid #D9D9DD;   
+  background-color: #f4f4f4;
+  box-shadow:  0 1px 4px rgba(0, 0, 0, 0.2) inset;
+}
+.rsMinW .rsTab.rsNavSelected { 
+  color: #000;
+  border: 1px solid #999;
+  text-shadow: 1px 1px #838383;
+  box-shadow: 0 1px 9px rgba(102, 102, 102, 0.65) inset;
+  background: #ACACAC;
+  background-image: -webkit-linear-gradient(top, #ACACAC, #BBB);
+  background-image: -moz-llinear-gradient(top, #ACACAC, #BBB);
+  background-image: linear-gradient(to bottom, #ACACAC, #BBB);
+}
+
+
+
+
+
+/***************
+*
+*  5. Fullscreen button
+*
+****************/
+
+.rsMinW .rsFullscreenBtn {
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  z-index: 22;
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  
+}
+.rsMinW .rsFullscreenIcn {
+  display: block;
+  margin: 6px;
+  width: 32px;
+  height: 32px;
+
+  background: url('rs-minimal-white.png') 0 0 transparent;
+}
+.rsMinW .rsFullscreenIcn:hover {
+  opacity: 0.8;
+}
+.rsMinW.rsFullscreen .rsFullscreenIcn {
+  background-position: -32px 0;
+}
+
+
+
+
+
+/***************
+*
+*  6. Play/close video button
+*
+****************/
+
+.rsMinW .rsPlayBtn {
+  -webkit-tap-highlight-color:rgba(0,0,0,0.3);
+  width:64px;
+  height:64px;
+  margin-left:-32px;
+  margin-top:-32px;
+  cursor: pointer;
+}
+.rsMinW .rsPlayBtnIcon {
+  width:64px;
+  display:block;
+  height:64px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  transition: .3s;
+
+  background:url(rs-minimal-white.png) no-repeat 0 -32px;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.75);
+  *background-color: #000;
+}
+.rsMinW .rsPlayBtn:hover .rsPlayBtnIcon {
+  background-color: rgba(0,0,0,0.9);
+}
+.rsMinW .rsBtnCenterer {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: 20px;
+  height: 20px;
+}
+.rsMinW .rsCloseVideoBtn {
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  z-index: 500;
+  position: absolute;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  
+}
+.rsMinW .rsCloseVideoBtn.rsiOSBtn {
+  top: -38px;
+  right: -6px;
+}
+
+.rsMinW .rsCloseVideoIcn {
+  margin: 6px;
+  width: 32px;
+  height: 32px;
+  background: url('rs-minimal-white.png') -64px 0;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.75);
+  *background-color: #000;
+}
+.rsMinW .rsCloseVideoIcn:hover {
+  background-color: rgba(0,0,0,0.9);
+}
+
+
+
+/***************
+*
+*  7. Preloader
+*
+****************/
+
+.rsMinW .rsPreloader {
+  width:20px;
+  height:20px;
+  background-image:url(../preloaders/preloader-white.gif);
+
+  left:50%;
+  top:50%;
+  margin-left:-10px;
+  margin-top:-10px; 
+}
+
+
+
+
+/***************
+*
+*  8. Global caption
+*
+****************/
+.rsMinW .rsGCaption {
+  position: absolute;
+  float: none;
+  bottom: 6px;
+  left: 6px;
+  text-align: left;
+
+  background: #000;
+    background: rgba(0,0,0, 0.75);
+
+  color: #FFF;
+  padding: 2px 8px;
+  width: auto;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+
+
+/*****************
+* ===============================
+*
+* Carousel styles here
+*
+* ===============================
+*******************/
+
+/*
+ * Swiper - Mobile Touch Slider CSS
+ * http://www.idangero.us/sliders/swiper
+ *
+ * Vladimir Kharlampidi, The iDangero.us
+ * http://www.idangero.us/
+ * 
+ * Copyright 2012-2013, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us
+ *
+ * Licensed under GPL & MIT
+ *
+*/
+
+/* ===============================================================
+Basic Swiper Styles 
+================================================================*/
+.swiper-container {
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+  -webkit-backface-visibility:hidden;
+  -moz-backface-visibility:hidden;
+  -ms-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  backface-visibility:hidden;
+  /* Fix of Webkit flickering */
+  z-index:1;
+}
+.swiper-wrapper {
+  position:relative;
+  width:100%;
+  -webkit-transition-property:-webkit-transform, left, top;
+  -webkit-transition-duration:0s;
+  -webkit-transform:translate3d(0px,0,0);
+  -webkit-transition-timing-function:ease;
+  
+  -moz-transition-property:-moz-transform, left, top;
+  -moz-transition-duration:0s;
+  -moz-transform:translate3d(0px,0,0);
+  -moz-transition-timing-function:ease;
+  
+  -o-transition-property:-o-transform, left, top;
+  -o-transition-duration:0s;
+  -o-transform:translate3d(0px,0,0);
+  -o-transition-timing-function:ease;
+  -o-transform:translate(0px,0px);
+  
+  -ms-transition-property:-ms-transform, left, top;
+  -ms-transition-duration:0s;
+  -ms-transform:translate3d(0px,0,0);
+  -ms-transition-timing-function:ease;
+  
+  transition-property:transform, left, top;
+  transition-duration:0s;
+  transform:translate3d(0px,0,0);
+  transition-timing-function:ease;
+
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.swiper-free-mode > .swiper-wrapper {
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  margin: 0 auto;
+}
+.swiper-slide {
+  float: left;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+  -ms-touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+  -ms-touch-action: pan-x;
+}
+
+/* ===============================================================
+Your custom styles, here you need to specify container's and slide's
+sizes, pagination, etc.
+================================================================*/
+.swiper-container {
+  /* Specify Swiper's Size: */
+
+  /*width:200px;
+  height: 100px;*/
+}
+.swiper-slide {
+  /* Specify Slides's Size: */
+  
+  /*width: 100%;
+  height: 100%;*/
+}
+.swiper-slide-active {
+  /* Specific active slide styling: */
+  
+}
+.swiper-slide-visible {
+  /* Specific visible slide styling: */ 
+
+}
+/* ===============================================================
+Pagination Styles
+================================================================*/
+.swiper-pagination-switch {
+  /* Stylize pagination button: */  
+
+}
+.swiper-active-switch {
+  /* Specific active button style: */ 
+  
+}
+.swiper-visible-switch {
+  /* Specific visible button style: */  
+  
+}
+
+
+/* ===============================================================
+Media Queries
+================================================================*/
+
+@media screen and (max-width: $xsmall) {
+  .mobile-navbar{
+      float: left;
+      width: 50%;
+      padding-left: 20px;
+      display: block;
+
+      & > #mobile-button img.open{
+        display: none;
+      }
+      & > #mobile-button img.closed{
+        display: block;
+      }
+    }
+}
+@media screen and (max-width: $small) {
+
+.mobile-bg{
+  display: block;
+}
+.non-mobile-bg{
+  display: none;
+}
+
+  .site-header, .site-footer{
+    position: relative;
+    padding: $gutter/3 0;
+    z-index: 888888;
+  }
+  .cart-checkout #checkout{
+    display: none;
+  }
+  .main-content{
+    margin-top: 0px;
+    padding-bottom: 0px;
+  }
+  .inner-wrap h1{
+    margin-top: -140px;
+    padding: 10px;
+  }
+  .inner-wrap h1 img,
+  .inner-wrap h3 img{
+    width: 98%;
+    height: auto;
+  }
+
+  .mobile-logo{
+    float: right;
+    width: 48%;
+  }
+  .mobile-nav{
+    display: block;
+  }
+  .mobile-navbar{
+    float: left;
+    width: 48%;
+    padding-left: 20px;
+    display: block;
+
+    & > #mobile-button img.open{
+      display: none;
+    }
+    & > #mobile-button img.closed{
+      display: block;
+    }
+  }
+  .header-logo {
+    text-align: right;
+    font-size: em(40px);
+    margin: 0 16px 8px;
+    max-width: 90px;
+    float: right;
+  }
+  #wines .swiper-container {
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
+  }
+  #collection-slider{
+    display: block;
+  }
+  .swiper-container .swiper-wrapper{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 450px;
+    height: 100%;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide .product{
+    height: 75%;
+    position: relative;
+  }
+  .product-grid-image{
+    height: 86%;
+  }
+  .product-grid-image img {
+    height: 70%;
+  }
+
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .bag-info,
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .product{
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  .big-stretch .inner>.inner-stretch {
+    padding: 0 0%;
+    background: rgba(0,0,0,0.2);
+  }
+  .big-stretch .inner>.inner-stretch h1{
+    padding: 10px 30px;
+    font-size: 26px;
+  }
+  .big-stretch .inner>.inner-stretch p{
+    padding: 0 20px;
+    font-size: 12px;
+  }
+  .big-stretch .inner>.inner-stretch hr.style-line{
+    display: none;
+  }
+  #our-biodynamics .inner>.inner-stretch .box,
+  #the-people .inner>.inner-stretch .box,
+  #our-land .inner>.inner-stretch .box {
+    float: none;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+  }
+
+  #the-people .inner>.inner-stretch h1,
+  #the-people .inner>.inner-stretch p,
+  #our-land .inner>.inner-stretch h1,
+  #our-land .inner>.inner-stretch p{
+    color: #fff !important;
+  }
+
+  .rsMinW .rsArrowRight {
+    right: 4%;
+    bottom: 3%;
+  }
+  .rsMinW .rsArrowLeft {
+    right: 4%;
+    top: 3%;
+  }
+
+  /* generic pages */
+
+  #life-is-light{
+    background-position: 50% 61%;
+    background-repeat: no-repeat;
+    background-size: 203%;
+  }
+
+  /* store page */
+
+  #types{
+    top: 23%;
+    z-index: 777777;
+    width: 286px;
+  }
+  #types #product-filter{
+    top: 37%;
+  }
+
+  .store-large .inner-wrap {
+    padding: 10px 12% 84px 12%;
+  }
+
+  #top-wines:first-child{
+    background: none;
+  }
+  .store-large .inner-wrap>#top-wines h1,
+  .store-large .inner-wrap>#top-wines .h1 {
+    margin: 5px 10px;
+    font-size: 2.5em;
+  }
+  .store-large .inner-wrap>h1:nth-child(3), .store-large .inner-wrap>.h1:nth-child(3) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  .store-large .inner-wrap>h1:nth-child(2), .store-large .inner-wrap>.h1:nth-child(2) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide {
+    width: 215px;
+  }
+
+  /* cart items */
+
+  .cart-row{
+    display: none;
+  }
+  .mobile-cart{
+    display: block;
+    padding: 5px;
+    z-index: 8888;
+  }
+  .mobile-cart-row{
+    border-bottom: solid 1px $brandGold;
+    margin-bottom: 5px;
+  }
+
+
+}
+
+
+@media screen and (min-width: $smallMed) and (max-width: $iphoneNew) {
+
+.mobile-bg{
+  display: block;
+}
+.non-mobile-bg{
+  display: none;
+}
+
+  .site-header, .site-footer{
+    position: relative;
+    padding: $gutter/3 0;
+    z-index: 77777;
+  }
+  .cart-checkout #checkout{
+    display: none;
+  }
+  .main-content{
+    margin-top: 0px;
+    padding-bottom: 0px;
+  }
+  .inner-wrap h1{
+    margin-top: -140px;
+    padding: 10px;
+  }
+  .inner-wrap h1 img,
+  .inner-wrap h3 img{
+    width: 98%;
+    height: auto;
+  }
+
+  .mobile-logo{
+    float: right;
+    width: 48%;
+  }
+  .mobile-nav{
+    display: block;
+  }
+  .mobile-navbar{
+    float: left;
+    width: 48%;
+    padding-left: 20px;
+    display: block;
+
+    & > #mobile-button img.open{
+      display: none;
+    }
+    & > #mobile-button img.closed{
+      display: block;
+    }
+  }
+  .header-logo {
+    text-align: right;
+    font-size: em(40px);
+    margin: 0 16px 8px;
+    max-width: 90px;
+    float: right;
+  }
+  #wines .swiper-container {
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
+  }
+  #collection-slider{
+    display: block;
+    padding: 0;
+  }
+  .swiper-container .swiper-wrapper{
+    padding-left: !important;
+    padding-right: !important;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 450px;
+    height: 100%;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide .product{
+    height: 75%;
+    position: relative;
+  }
+  .product-grid-image{
+    height: 86%;
+  }
+  .product-grid-image img {
+    height: 70%;
+  }
+
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .bag-info,
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .product{
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  .big-stretch .inner>.inner-stretch {
+    padding: 0 0%;
+    background: rgba(0,0,0,0.2);
+  }
+  .big-stretch .inner>.inner-stretch h1{
+    padding: 10px 30px;
+    font-size: 26px;
+  }
+  .big-stretch .inner>.inner-stretch p{
+    padding: 0 20px;
+    font-size: 12px;
+  }
+  .big-stretch .inner>.inner-stretch hr.style-line{
+    display: none;
+  }
+  #our-biodynamics .inner>.inner-stretch .box,
+  #the-people .inner>.inner-stretch .box,
+  #our-land .inner>.inner-stretch .box {
+    width: 65%;
+    padding: 20px;
+  }
+
+  #the-people .inner>.inner-stretch h1,
+  #the-people .inner>.inner-stretch p,
+  #our-land .inner>.inner-stretch h1,
+  #our-land .inner>.inner-stretch p{
+    color: #fff !important;
+  }
+
+  .rsMinW .rsArrowRight {
+    right: 4%;
+    bottom: 3%;
+  }
+  .rsMinW .rsArrowLeft {
+    right: 4%;
+    top: 3%;
+  }
+
+  /* generic pages */
+
+  #life-is-light{
+    background-position: 50% 61%;
+    background-repeat: no-repeat;
+    background-size: 203%;
+  }
+
+  /* store page */
+
+  #types{
+    top: 29%;
+    z-index: 777777;
+    width: 50%;
+  }
+  #types #product-filter{
+    top: 37%;
+  }
+
+  .store-large .inner-wrap {
+    padding: 10px 12% 84px 12%;
+  }
+
+  
+  .store-large .inner-wrap>#top-wines h1,
+  .store-large .inner-wrap>#top-wines .h1 {
+    margin: 5px 10px;
+    font-size: 2.4em;
+  }
+  .store-large .inner-wrap>h1:nth-child(3), .store-large .inner-wrap>.h1:nth-child(3) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  .store-large .inner-wrap>h1:nth-child(2), .store-large .inner-wrap>.h1:nth-child(2) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide {
+    width: 215px;
+  }
+
+  /* cart items */
+
+  .cart-row{
+    display: none;
+  }
+  .mobile-cart{
+    display: block;
+    padding: 5px;
+  }
+
+
+}
+
+
+
+
+@media screen and (max-width: $medium) {
+
+.mobile-bg{
+  display: block;
+}
+.non-mobile-bg{
+  display: none;
+}
+
+  .site-header, .site-footer{
+    padding: $gutter/3 0;
+    z-index: 77777;
+  }
+  .site-header .grid--full > .nav-bar .main-nav{
+    display: none;
+  }
+  .site-header .grid--full > .nav-bar{
+    width: 50%;
+  }
+  .cart-checkout #checkout{
+    display: none;
+  }
+  .main-content{
+    margin-top: 0px;
+    padding-bottom: 0px;
+  }
+  .inner-wrap h1{
+    margin-top: -140px;
+    padding: 10px;
+  }
+  .inner-wrap h1 img,
+  .inner-wrap h3 img{
+    width: 98%;
+    height: auto;
+  }
+
+  .mobile-logo{
+    float: right;
+    width: 48%;
+  }
+  .mobile-nav{
+    display: block;
+  }
+  .mobile-navbar{
+    float: left;
+    width: 48%;
+    padding-left: 20px;
+    display: block;
+    padding-top: 5%;
+
+    & > #mobile-button img.open{
+      display: none;
+    }
+    & > #mobile-button img.closed{
+      display: block;
+    }
+  }
+  .header-logo {
+    text-align: right;
+    font-size: em(40px);
+    margin: 0 16px 8px;
+    max-width: 90px;
+    float: right;
+  }
+  #wines .swiper-container {
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
+  }
+  #collection-slider{
+    display: block;
+    padding: 0;
+  }
+  .swiper-container .swiper-wrapper{
+    padding-left: !important;
+    padding-right: !important;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 450px;
+    height: 100%;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide .product{
+    height: 75%;
+    position: relative;
+  }
+  .product-grid-image{
+    height: 86%;
+  }
+  .product-grid-image img {
+    height: 70%;
+  }
+
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .bag-info,
+  #wines .swiper-container .swiper-wrapper .swiper-slide > form .product{
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  .big-stretch .inner>.inner-stretch {
+    padding: 0 0%;
+    background: rgba(0,0,0,0.2);
+  }
+  .big-stretch .inner>.inner-stretch h1{
+    padding: 10px 30px;
+    font-size: 26px;
+  }
+  .big-stretch .inner>.inner-stretch p{
+    padding: 0 20px;
+    font-size: 12px;
+  }
+  .big-stretch .inner>.inner-stretch hr.style-line{
+    display: none;
+  }
+  #our-biodynamics .inner>.inner-stretch .box,
+  #the-people .inner>.inner-stretch .box,
+  #our-land .inner>.inner-stretch .box {
+    width: 65%;
+    padding: 20px;
+  }
+
+  #the-people .inner>.inner-stretch h1,
+  #the-people .inner>.inner-stretch p,
+  #our-land .inner>.inner-stretch h1,
+  #our-land .inner>.inner-stretch p{
+    color: #fff !important;
+  }
+
+  .rsMinW .rsArrowRight {
+    right: 4%;
+    bottom: 3%;
+  }
+  .rsMinW .rsArrowLeft {
+    right: 4%;
+    top: 3%;
+  }
+
+  /* generic pages */
+
+  #life-is-light{
+    background-position: 50% 61%;
+    background-repeat: no-repeat;
+    background-size: 203%;
+  }
+
+  /* store page */
+
+  #types{
+    top: 29%;
+    z-index: 777777;
+    width: 50%;
+  }
+  #types #product-filter{
+    top: 37%;
+  }
+
+  .store-large .inner-wrap {
+    padding: 10px 12% 84px 12%;
+  }
+
+  
+  .store-large .inner-wrap>#top-wines h1,
+  .store-large .inner-wrap>#top-wines .h1 {
+    margin: 5px 10px;
+    font-size: 2.4em;
+  }
+  .store-large .inner-wrap>h1:nth-child(3), .store-large .inner-wrap>.h1:nth-child(3) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  .store-large .inner-wrap>h1:nth-child(2), .store-large .inner-wrap>.h1:nth-child(2) {
+    font-size: 2.5em;
+    margin: 5px 10px;
+  }
+  #wines .swiper-container .swiper-wrapper .swiper-slide {
+    width: 215px;
+  }
+
+  /* cart items */
+
+  .cart-row{
+    display: none;
+  }
+  .mobile-cart{
+    display: block;
+    padding: 5px;
+  }
+
+
+}
+
+>>>>>>> 3dc9760f93e11be01611dda911dee2aeb08951ed
