@@ -14,25 +14,7 @@
     <img class="open" style="display: none;" src="{{ 'mobile-menu-icon-active.png' | asset_url }}" alt="mobile menu icon" itemprop="mobile-button">
     </span>
   </a>
-{% if collection.all_types.size > 0 %}
-    <ul class="the-types">
-      {% for type in collection.all_types %}
-        {% if collection.current_type == type %}
-          <li class="active-filter">
-            <span> {{ type | link_to_type }}</span>
-          </li>
-          {% else %}
-          <li>
-            <span> {{ type | link_to_type }}</span>
-          </li>
-        {% endif %}
-        {% include 'collection-types-all' %}
-      {% endfor %}
-      
-    </ul>
-  {% else %}
-    <p>Add a type to your products for this list to build itself. All lists are created in <strong>collection-sidebar.liquid</strong>.</p>
-  {% endif %}
+  {% include 'collection-types-all' %}
 </div>
   <div id="product-holder">
       <div id="product-inner">

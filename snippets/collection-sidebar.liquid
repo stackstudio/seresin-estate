@@ -13,8 +13,10 @@
   Product types in the current collection
     - List all of the shop's types with collections.all.all_types
     - List the current collection's types with collection.all_types
+
+    - We would usually show these but this time we will hide it all.
 {% endcomment %}
-{% if collection.all_types.size > 0 %}
+{% comment %}{% if collection.all_types.size > 0 %}
 <h3>Product Types</h3>
   <ul>
     {% for type in collection.all_types %}
@@ -31,13 +33,15 @@
   </ul>
 {% else %}
   <p>Add a type to your products for this list to build itself. All lists are created in <strong>collection-sidebar.liquid</strong>.</p>
-{% endif %}
+{% endif %}{% endcomment %}
 
 {% comment %}
   Product vendors in the current collection
     - List all of the shop's vendors with collections.all.all_vendors
     - List the current collection's vendors with collection.all_vendors
-{% endcomment %}
+
+    - Again, I don't think we need the vendors as the vendor is the whole shop
+
 {% if collection.all_vendors.size > 0 %}
 <h3>Vendors</h3>
   <ul>
@@ -58,6 +62,8 @@
   <p>Add a vendor to your product for this list to build itself.</p>
 {% endif %}
 
+{% endcomment %}
+
 {% comment %}
   Product tags in the current collection
 {% endcomment %}
@@ -68,7 +74,7 @@
     To provide a 'catch-all' link at the top of the list,
     check against the collection.handle, product type, and vendor.
   {% endcomment %}
-  <ul>
+  <ul class="the-types">
     <li{% unless current_tags %} class="active-filter"{% endunless %}>
 
       {% comment %}

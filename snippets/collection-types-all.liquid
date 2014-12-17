@@ -23,17 +23,6 @@
       </div>
     </header>
     {% endif %}{% endcomment %}
-{% for product_type in collection.all_types %}
-
-  {% for product in collection.products %}
-    {% if product.type == product_type | handleize %}     
-      <li>
-          {{ product.type | link_to_type }}
-        </li>
-    {% endif %}
-  {% endfor %}
-
-{% endfor %}
 <div class="grid-item large--one-whole">
 {% include 'collection-sidebar' %}
 </div>
