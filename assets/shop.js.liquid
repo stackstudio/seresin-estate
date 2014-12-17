@@ -717,28 +717,6 @@ timber.getUrls = function(){
 
   if(window.location.href.indexOf("collections") > -1) {
 
-    function hideAll() {
-    $('#collection-slider').css({
-      width: '100%',
-      float: 'none'
-    });
-    $('#wines .swiper-container').css({
-      width: '100%',
-      display: 'block'
-    });
-    $('#tasting-notes').css('display','none'); 
-  }
-
-  if(window.location.href.indexOf("collections/red-wine")) {
-     hideAll();   
-    } else if(window.location.href.indexOf("collections/white-wine")) {
-      hideAll();
-    } else if(window.location.href.indexOf("collections/oil")) {
-      hideAll();
-    } else if(window.location.href.indexOf("collections/conserves")) {
-      hideAll();
-  } else {}
-
     function getParameterByName(name) {
 
         var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
