@@ -313,71 +313,32 @@ timber.Geo = function() {
 timber.getPages = function() {
       
 
- var sliderStory = $('.article-container-land').royalSlider({
-  arrowsNav: true,
-  arrowsNavAutoHide: false,
-  fadeinLoadedSlide: true,
-  controlNavigation: 'none',
-  imageAlignCenter:true,
-  loop: false,
-  loopRewind: false,
-  numImagesToPreload: 6,
-  usePreloader: true,
-  slidesSpacing: 0,
-  slidesOrientation: 'vertical',
-  keyboardNavEnabled: true,
-  addActiveClass: true,
-  randomizeSlides: false,
-  imageScaleMode: 'fill',
-  arrowsNavAutoHide: false,
-  autoScaleSlider: false, 
-  autoScaleSliderWidth: 1960,     
-  autoScaleSliderHeight: 800,
-  video: {
-    autoHideArrows:true,
-    autoHideControlNav:true
-  }  
-}).data('royalSlider');
+   var sliderStory = $('.article-container-land').royalSlider({
+    arrowsNav: true,
+    arrowsNavAutoHide: false,
+    fadeinLoadedSlide: true,
+    controlNavigation: 'none',
+    imageAlignCenter:true,
+    loop: false,
+    loopRewind: false,
+    numImagesToPreload: 6,
+    usePreloader: true,
+    slidesSpacing: 0,
+    slidesOrientation: 'vertical',
+    keyboardNavEnabled: true,
+    addActiveClass: true,
+    randomizeSlides: false,
+    imageScaleMode: 'fill',
+    arrowsNavAutoHide: false,
+    autoScaleSlider: false, 
+    autoScaleSliderWidth: 1960,     
+    autoScaleSliderHeight: 800,
+    video: {
+      autoHideArrows:true,
+      autoHideControlNav:true
+    }  
+  }).data('royalSlider');
 
-
-
-{% comment %}    $.each( $("#data-urls li") , function () {
-
-      var dataUrl = $(this).attr('data-url');
-
-      var t = $(this);
-      var dataTitleObj = $(this).attr('data-title');
-      var jsonObj = [];
-
-      $(window).load(function() {
-
-        infoEffectOut('#land-loader');
-        $('#land-loader').delay(2000).remove();
-        infoEffectIn('.article-container-land');
-
-      });
- 
-      $.get( dataUrl, function( data ) {
-
-        $.each(data, function(i, item) {
-          var body = data[i].body_html,title = data[i].title,id = data[i].handle,orderNum = data[i].id;
-          sliderStory.appendSlide('<section data-order="" id="'+ id +'" href="#'+ id +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ title +'</h1><hr class="style-line"><p class="">'+ body +'</p></div></div></figure></section>');
-          $('.page-holder').append('<section data-order="" id="'+ id +'" href="#'+ id +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ title +'</h1><hr class="style-line"><p class="">'+ body +'</p></div></div></figure></section>');
-          timber.largeImageResize();
-        });
-      }, 'json').done(function() {
-
-        var h1 = $('#life-is-light .inner .inner-stretch h1');
-        var text = h1.text().split(' ');
-
-        for( var i = 1, len = text.length; i < len; i=i+2 ) {
-            text[i] = '<span class="italic">' + text[i] + '</span>';
-        }
-        h1.html(text.join(' '));
-
-      });
-
-    });{% endcomment %}
 
     var promises = $("#data-urls li").map(function() { 
         return $.get($(this).data('url')); 
@@ -387,11 +348,19 @@ timber.getPages = function() {
         var responses = [].slice.call(arguments);
         $.each(responses, function(i, data) {
           var root = data[0];
-          console.log(data[0].page.title); // json response
+          console.log(data[0].page.title);
            var body = data[0].page.body_html,title = data[0].page.title,id = data[0].page.handle,orderNum = data[0].page.id;
           sliderStory.appendSlide('<section data-order="" id="'+ id +'" href="#'+ id +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ title +'</h1><hr class="style-line"><p class="">'+ body +'</p></div></div></figure></section>');
           timber.largeImageResize();
         });
+
+        var h1 = $('#life-is-light .inner .inner-stretch h1');
+        var text = h1.text().split(' ');
+
+        for( var i = 1, len = text.length; i < len; i=i+2 ) {
+            text[i] = '<span class="italic">' + text[i] + '</span>';
+        }
+        h1.html(text.join(' '));
     });
 
     $(window).load(function() {
@@ -434,33 +403,27 @@ var sliderDining = $('.article-container-dining').royalSlider({
 
   if ($('article#dining').length) {
 
-    $.each( $("#data-urls-dining li") , function () {
+    var dining = $("#data-urls-dining li").map(function() { 
+        return $.get($(this).data('url')); 
+    });
 
-      var dataUrlD = $(this).attr('data-url');
-
-      var jsonObjD = [];
-
-      $(window).load(function() {
-
-        infoEffectOut('#dining-loader');
-        $('#dining-loader').delay(2000).remove();
-        infoEffectIn('.article-container-dining');
-
-      });
-          
-      $.get( dataUrlD, function( success ) {
-
-        $.each(success, function(d, item) {
-          var bodyWine = success[d].body_html,titleWine = success[d].title,idWine = success[d].handle;
+    $.when.apply(null, dining).then(function() {
+        var responses = [].slice.call(arguments);
+        $.each(responses, function(i, data) {
+          var root = data[0];
+          var bodyWine = data[0].page.body_html,titleWine = data[0].page.title,idWine = data[0].page.handle;
           sliderDining.appendSlide('<section id="'+ idWine +'" href="#'+ idWine +'" class="big-stretch active"><figure class="inner"><div class="inner-stretch"><div class="box"><h1 class="">'+ titleWine +'</h1><hr class="style-line"><p class="">'+ bodyWine +'</p></div></div></figure></section>');
-          timber.largeImageResize();
+            timber.largeImageResize();
         });
+    });
 
-      }, 'json').done(function() {
+    $(window).load(function() {
 
-      });
+      infoEffectOut('#dining-loader');
+      $('#dining-loader').delay(2000).remove();
+      infoEffectIn('.article-container-dining');
 
-  });
+    });
 
   }
 
@@ -799,14 +762,14 @@ timber.getUrls = function(){
 
 timber.removeDup = function() {
 
-var seen = {};
-$.each( $("ul.the-types li a") , function () {
-    var txt = $(this).text();
-    if (seen[txt])
-        $(this).parent().remove();
-    else
-        seen[txt] = true;
-});
+  var seen = {};
+  $.each( $("ul.the-types li a") , function () {
+      var txt = $(this).text();
+      if (seen[txt])
+          $(this).parent().remove();
+      else
+          seen[txt] = true;
+  });
 
   
 };
