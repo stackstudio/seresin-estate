@@ -728,7 +728,8 @@ timber.getUrls = function(){
     var qvalue = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
     var url = window.location.search;
 
-    if (window.location.href.indexOf(qvalue)) {
+    if ( window.location.href.indexOf(qvalue) == 'white-wine' ) {
+  } else {
       var string = qvalue;
       var stringed = string.toLowerCase();
       var stringDash = stringed.replace(" ", "-");
